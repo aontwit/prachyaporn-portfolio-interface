@@ -28,7 +28,8 @@ function Stroke({ d, viewBox, className }: { d: string; viewBox: string; classNa
         stroke="currentColor"
         strokeWidth={1.5}
         strokeLinecap="round"
-        vectorEffect="non-scaling-stroke"
+        // No vector-effect="non-scaling-stroke": Chromium then measures pathLength dashes in screen
+        // space, and an ellipse drawn wider than its viewBox never closes.
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{ duration: reduce || paused ? 0 : 0.8, ease: EASE }}

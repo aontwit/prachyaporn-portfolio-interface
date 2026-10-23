@@ -44,7 +44,7 @@ export async function Contact() {
             <li key={a.icon}>
               <a
                 href={a.href}
-                className="group flex min-h-16 items-center gap-3 rounded-2xl border border-line px-3 py-3 sm:gap-4 sm:px-4 transition-colors hover:border-accent hover:bg-accent-soft/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="group flex min-h-16 items-center gap-3 rounded-[1.25rem] border border-line px-3 py-3 sm:gap-4 sm:px-4 transition-colors hover:border-accent hover:bg-accent-soft/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
               >
                 <span className="grid size-11 shrink-0 place-items-center rounded-full border border-line text-accent transition-colors group-hover:border-accent">
                   <Icon name={a.icon} className="size-5" />

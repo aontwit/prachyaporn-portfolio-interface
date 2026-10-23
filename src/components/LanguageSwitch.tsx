@@ -29,6 +29,7 @@ export function LanguageSwitch() {
     anchor.current = captureAnchor();
     startTransition(async () => {
       if ((await setLocale(next)).ok) router.refresh();
+      else anchor.current = null;
     });
   };
 

@@ -44,8 +44,9 @@ export function NavList({ variant, onNavigate }: { variant: Variant; onNavigate?
         );
         const props = {
           className: `${style.link} ${isActive ? "text-ink" : ""} focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent`,
-          // On `/` the mark follows the section in view (a location); elsewhere it is the page itself.
-          "aria-current": isActive ? (pathname === "/" ? "location" : "page") : undefined,
+          // On `/` the mark follows the section in view (a location, only for in-page links);
+          // elsewhere it is the page itself.
+          "aria-current": !isActive ? undefined : pathname !== "/" ? "page" : href.startsWith("#") ? "location" : undefined,
           onClick: onNavigate,
         } as const;
         return (

@@ -16,6 +16,8 @@ export function MobileMenu({ name }: { name: string }) {
   const pathname = usePathname();
   // The sheet belongs to the page it was opened on, so any navigation closes it.
   const [openOn, setOpenOn] = useState<string | null>(null);
+  // Forget it once the page changed (browser Back included), so Forward never reopens it.
+  if (openOn !== null && openOn !== pathname) setOpenOn(null);
   const open = openOn === pathname;
   const sheetId = useId();
   const button = useRef<HTMLButtonElement>(null);
