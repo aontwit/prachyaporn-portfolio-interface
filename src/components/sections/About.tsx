@@ -25,12 +25,17 @@ function splitAround(text: string, phrase: string) {
   };
 }
 
+const PAIRS: Record<string, string> = { "(": ")", "“": "”", '"': '"' };
+
 const BEAR = doodle("bear-pencil");
 
 // A taped notebook page: the summary written on the 32px rules, one key phrase circled by the pen.
 export async function About() {
   const t = await getTranslations();
   const { before, open, phrase, close, after } = splitAround(t("profile.summary"), t("about.keyPhrase"));
+  // only the bracket that really closes `open` goes inside the circle
+  const pair = PAIRS[open];
+  const closer = pair && close.startsWith(pair) ? pair : "";
   return (
     <Section id="about" title={t("nav.about")}>
       <Sheet tilt={-0.6} tape="one">
@@ -46,10 +51,14 @@ export async function About() {
         <p className="max-w-3xl text-base leading-8 text-ink sm:text-lg">
           {before}
           {phrase && (
-            <span className="mx-1.5 whitespace-nowrap">
-              {open}
-              <PenCircle>{phrase}</PenCircle>
-              {close}
+            <span className="whitespace-nowrap">
+              {/* the pen circles a matched bracket pair with the phrase; trailing "." "," stay outside */}
+              <PenCircle>
+                {open}
+                {phrase}
+                {closer}
+              </PenCircle>
+              {close.slice(closer.length)}
             </span>
           )}
           {after}
