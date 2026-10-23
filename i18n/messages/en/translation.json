@@ -131,6 +131,7 @@
   },
   "contact": {
     "title": "Get in touch",
+    "greeting": "Hello!",
     "intro": "Happy to talk about teaching, tutoring and new opportunities.",
     "email": "Email",
     "phone": "Phone"

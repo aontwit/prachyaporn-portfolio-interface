@@ -9,7 +9,7 @@ import { setLocale } from "../../i18n/actions";
 import { LOCALES } from "../../i18n/locales";
 
 /**
- * `ไทย / EN` text switch (DESIGN.md): sets the NEXT_LOCALE cookie, then re-renders on the server.
+ * `ไทย / EN` handwritten switch (DESIGN.md): sets the NEXT_LOCALE cookie, then re-renders on the server.
  * `router.refresh()` keeps the page and the scroll offset; the anchor keeps the reader on the same
  * section when the other language wraps to a different height.
  */
@@ -34,7 +34,7 @@ export function LanguageSwitch() {
   };
 
   return (
-    <div role="group" aria-label={t("label")} aria-busy={pending} className="flex items-center gap-1 text-sm">
+    <div role="group" aria-label={t("label")} aria-busy={pending} className="flex items-center gap-1 font-hand text-sm">
       {LOCALES.map((l, i) => (
         <span key={l} className="flex items-center gap-1">
           {i > 0 && (
@@ -48,7 +48,7 @@ export function LanguageSwitch() {
             aria-pressed={l === locale}
             disabled={pending}
             onClick={() => l !== locale && choose(l)}
-            className={`relative inline-flex min-h-11 items-center px-1.5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-crayon-blue ${l === locale ? "text-ink" : "text-pencil hover:text-ink"}`}
+            className={`relative inline-flex min-h-11 items-center px-1.5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-blue ${l === locale ? "text-ink" : "text-pencil hover:text-ink"}`}
           >
             <span className="relative">
               {t(l)}

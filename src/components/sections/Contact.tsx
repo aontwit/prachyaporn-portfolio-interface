@@ -1,9 +1,11 @@
 import { getTranslations } from "next-intl/server";
 import type { ReactNode } from "react";
 import { Section } from "@/components/Section";
+import { Sheet, Tape } from "@/components/paper";
+import { tiltStyle } from "@/components/paper/tilt";
 import { profile } from "@/content/profile";
 
-// Small line icons (inline SVG, no icon library), drawn on a 24px grid at the 1.5px journal stroke.
+// Small line icons (inline SVG, no icon library), drawn on a 24px grid at a 1.5px pen stroke.
 const ICONS = {
   email: <path d="M3.5 6.5h17v11h-17zM4 7l8 6.2L20 7" />,
   phone: (
@@ -20,44 +22,46 @@ function Icon({ name, className }: { name: keyof typeof ICONS; className: string
   );
 }
 
-/** Calm contact card: email and phone as large tappable actions. Only these two are public. */
+/**
+ * A short letter on a lined sheet: a handwritten greeting, the intro and the town on the rules, then
+ * email and phone as two taped paper cards (each one big tap target). Only these two are public.
+ */
 export async function Contact() {
   const t = await getTranslations();
   const [user, domain] = profile.email.split("@");
-  const actions = [
+  const cards = [
     // <wbr>: on a narrow phone the address wraps before "@", never mid-word.
-    { icon: "email", label: t("contact.email"), value: <>{user}<wbr />@{domain}</>, href: `mailto:${profile.email}` },
-    { icon: "phone", label: t("contact.phone"), value: profile.phone, href: profile.phoneHref },
+    { icon: "email", label: t("contact.email"), value: <>{user}<wbr />@{domain}</>, href: `mailto:${profile.email}`, tilt: -1, tape: "left-6 -rotate-6" },
+    { icon: "phone", label: t("contact.phone"), value: profile.phone, href: profile.phoneHref, tilt: 1, tape: "right-6 rotate-4" },
   ] as const;
 
   return (
     <Section id="contact" title={t("contact.title")}>
-      <div className="relative overflow-hidden rounded-3xl border border-rule bg-sheet p-5 pl-7 sm:p-10 sm:pl-12">
-        <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-grid-strong" />
-        <p className="max-w-prose text-lg leading-relaxed text-ink">{t("contact.intro")}</p>
-        <p className="mt-3 flex items-center gap-2 text-sm text-pencil">
-          <Icon name="place" className="size-4 shrink-0 text-crayon-blue" />
+      <Sheet tape="two" tilt={-0.4}>
+        <p className="font-hand text-xl leading-8 text-ink">{t("contact.greeting")}</p>
+        <p className="max-w-prose text-ink">{t("contact.intro")}</p>
+        <p className="flex items-center gap-2 font-hand text-pencil">
+          <Icon name="place" className="size-4 shrink-0 text-ink-blue" />
           {t("profile.location")}
         </p>
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-          {actions.map((a) => (
-            <li key={a.icon}>
+        <ul className="mt-8 mb-2 grid gap-8 sm:grid-cols-2 sm:gap-6">
+          {cards.map((c) => (
+            <li key={c.icon} className="tilt relative" style={tiltStyle(c.tilt, 2)}>
+              <Tape className={c.tape} />
               <a
-                href={a.href}
-                className="group flex min-h-16 items-center gap-3 rounded-[1.25rem] border border-rule px-3 py-3 sm:gap-4 sm:px-4 transition-colors hover:border-crayon-blue hover:bg-note-blue/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-crayon-blue"
+                href={c.href}
+                className="flex min-h-16 items-center gap-3 bg-sheet px-4 pt-5 pb-3 leading-normal shadow-note transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-blue motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 motion-reduce:transition-none sm:gap-4 sm:px-5"
               >
-                <span className="grid size-11 shrink-0 place-items-center rounded-full border border-rule text-crayon-blue transition-colors group-hover:border-crayon-blue">
-                  <Icon name={a.icon} className="size-5" />
-                </span>
+                <Icon name={c.icon} className="size-6 shrink-0 text-ink-blue" />
                 <span className="min-w-0">
-                  <span className="block text-xs tracking-[.12em] text-pencil uppercase">{a.label}</span>
-                  <span className="block text-base [overflow-wrap:anywhere] text-ink">{a.value}</span>
+                  <span className="block font-hand text-sm text-pencil">{c.label}</span>
+                  <span className="block text-base font-medium [overflow-wrap:anywhere] text-ink-blue">{c.value}</span>
                 </span>
               </a>
             </li>
           ))}
         </ul>
-      </div>
+      </Sheet>
     </Section>
   );
 }
