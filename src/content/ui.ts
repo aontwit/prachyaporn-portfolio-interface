@@ -12,6 +12,10 @@ export const ui = {
   },
   switchLanguage: { th: "English", en: "ภาษาไทย" },
   skipToContent: { th: "ข้ามไปเนื้อหา", en: "Skip to content" },
+  motion: {
+    pause: { th: "หยุดภาพเคลื่อนไหว", en: "Pause motion" },
+    play: { th: "เล่นภาพเคลื่อนไหว", en: "Play motion" },
+  },
   hero: {
     greeting: { th: "สวัสดีค่ะ", en: "Hello, I'm" },
     tagline: {

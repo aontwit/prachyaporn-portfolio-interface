@@ -43,3 +43,6 @@ next-env.d.ts
 # client source files (resume has private data; photos are resized into public/)
 /resume.jpg
 /events/
+
+# local browser tool output
+/.playwright-mcp/

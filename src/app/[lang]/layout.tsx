@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { IBM_Plex_Sans_Thai, Noto_Serif_Thai } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { MotionPauseProvider } from "@/components/MotionPause";
 import { profile } from "@/content/profile";
 import { hasLocale, locales } from "@/lib/i18n";
 import "../globals.css";
@@ -42,9 +43,11 @@ export default async function LangLayout({ children, params }: LayoutProps<"/[la
   return (
     <html lang={lang} className={`${body.variable} ${heading.variable}`}>
       <body className="min-h-dvh">
-        <Header lang={lang} />
-        <main id="content">{children}</main>
-        <Footer lang={lang} />
+        <MotionPauseProvider>
+          <Header lang={lang} />
+          <main id="content">{children}</main>
+          <Footer lang={lang} />
+        </MotionPauseProvider>
       </body>
     </html>
   );

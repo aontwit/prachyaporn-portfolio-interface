@@ -74,7 +74,7 @@ none — static content from `src/content/`; reduced motion is checked with Play
 | | |
 |---|---|
 | location | `PLAN.md` read from `origin/dev` |
-| reading order | `CLAUDE.md`, `PLAN.md` |
+| reading order | `CLAUDE.md`, `DESIGN.md`, `PLAN.md` |
 | task row | `\| <id> \| [ ] <task> \| <files> \| <Done when> \|` |
 | open questions | `PLAN.md` → Open questions |
 | not queued | none |
