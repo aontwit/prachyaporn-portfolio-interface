@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
+import { Highlighter } from "@/components/paper/Highlighter";
 
-/** Page section with an anchor id and the shared heading style. */
+/** Page section with an anchor id and the shared heading: handwritten (Mali) on a highlighter strip. */
 export function Section({
   id,
   title,
@@ -12,7 +13,9 @@ export function Section({
 }) {
   return (
     <section id={id} className="mx-auto max-w-5xl scroll-mt-24 px-4 py-20 sm:px-6">
-      <h2 className="font-display mb-10 text-3xl text-ink sm:text-4xl">{title}</h2>
+      <h2 className="mb-10 font-hand text-3xl leading-[1.5] font-bold text-ink sm:text-4xl">
+        <Highlighter>{title}</Highlighter>
+      </h2>
       {children}
     </section>
   );
