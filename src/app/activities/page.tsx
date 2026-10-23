@@ -27,7 +27,7 @@ export default async function ActivitiesPage() {
 
       <header className="mt-8">
         <p className="border-t border-line pt-3 text-xs tracking-[0.12em] text-muted uppercase">{t("label")}</p>
-        <h1 className="font-display mt-6 text-5xl leading-[1.2] text-ink sm:text-7xl">{t("title")}</h1>
+        <h1 className="font-display mt-6 text-5xl leading-[1.2] text-ink sm:text-7xl [:lang(th)_&]:leading-[1.6]">{t("title")}</h1>
         <p className="mt-5 max-w-xl text-lg leading-[1.8] text-muted">{t("intro")}</p>
       </header>
 

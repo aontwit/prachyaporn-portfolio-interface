@@ -60,10 +60,12 @@ export function Lightbox({
   };
 
   function handleKeyDown(e: KeyboardEvent<HTMLDialogElement>) {
-    if (e.key === "ArrowRight" && multiple) {
+    // Leave Alt/Ctrl/Meta + arrow to the browser (Alt+← is "back").
+    const plainArrow = multiple && !e.altKey && !e.ctrlKey && !e.metaKey;
+    if (e.key === "ArrowRight" && plainArrow) {
       e.preventDefault();
       step(1);
-    } else if (e.key === "ArrowLeft" && multiple) {
+    } else if (e.key === "ArrowLeft" && plainArrow) {
       e.preventDefault();
       step(-1);
     } else if (e.key === "Tab") {
@@ -89,6 +91,7 @@ export function Lightbox({
   return (
     <dialog
       ref={ref}
+      role="dialog"
       aria-modal="true"
       aria-label={t("label", { title })}
       onClose={() => {
@@ -101,8 +104,10 @@ export function Lightbox({
     >
       <div className="flex h-full flex-col px-4 py-3 sm:px-6 sm:py-4">
         <div className="flex items-center justify-between gap-4">
+          {/* Announces the counter and the new photo's alt on every ←/→; the visible caption is hidden from AT. */}
           <p className="text-sm text-surface/80" aria-live="polite">
             {index !== null && t("counter", { current: index + 1, total: photos.length })}
+            {photo && <span className="sr-only"> — {photo.alt}</span>}
           </p>
           <button type="button" onClick={close} aria-label={t("close")} className={iconButton}>
             <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
@@ -124,7 +129,7 @@ export function Lightbox({
                 // Fit inside the space left by the bars and caption, keeping the photo's own ratio.
                 style={{ width: `min(100%, calc((100dvh - 13rem) * ${photo.width / photo.height}))` }}
               />
-              <figcaption className="max-w-2xl text-center text-sm leading-[1.7] text-surface/90">
+              <figcaption aria-hidden="true" className="max-w-2xl text-center text-sm leading-[1.7] text-surface/90">
                 {photo.alt}
               </figcaption>
             </figure>
