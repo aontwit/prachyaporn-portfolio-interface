@@ -11,7 +11,7 @@ export async function Footer() {
   const t = await getTranslations();
   const name = t("profile.name");
   return (
-    <footer className="mt-10 border-t-4 border-grid-strong bg-note-blue shadow-sheet">
+    <footer className="mt-10 border-t-4 border-grid-strong bg-note-blue">
       <div className="mx-auto max-w-5xl px-4 pt-10 pb-24 sm:px-6">
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-2">
           <div className="flex items-center gap-3">

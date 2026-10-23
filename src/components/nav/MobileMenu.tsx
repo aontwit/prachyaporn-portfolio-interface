@@ -96,7 +96,7 @@ export function MobileMenu({ name }: { name: string }) {
         hidden={!open}
         className="lined-paper fixed inset-0 z-50 flex flex-col overflow-y-auto bg-local"
       >
-        <div className="flex min-h-16 shrink-0 items-center justify-between gap-4 border-b border-rule bg-sheet px-4">
+        <div className="flex h-16 shrink-0 items-center justify-between gap-4 border-b border-rule bg-sheet px-4">
           <span className="font-hand text-lg">{name}</span>
           <button
             type="button"
