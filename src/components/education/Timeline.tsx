@@ -20,9 +20,13 @@ const useHydrated = () =>
     () => false,
   );
 
-/** Vertical timeline: a hairline that draws top→bottom with the scroll, items that reveal in turn. */
+/**
+ * Vertical timeline: a hairline that draws top→bottom with the scroll, items that reveal in turn.
+ * Items use their own `motion.li` rather than `Reveal` because they must also stop for "Pause motion"
+ * and keep the server HTML equal to the first client render.
+ */
 export function Timeline({ items }: { items: TimelineItem[] }) {
-  const ref = useRef<HTMLOListElement>(null);
+  const ref = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const { paused } = useMotionPause();
   // Reduced motion or "Pause motion": the final state, nothing moves.
@@ -30,17 +34,18 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start 80%", "end 60%"] });
 
   return (
-    <ol ref={ref} className="relative space-y-12 pl-10 sm:pl-14">
+    <div ref={ref} className="relative pl-10 sm:pl-14">
       <span aria-hidden className="absolute top-2 bottom-2 left-1.75 w-px bg-line" />
       <motion.span
         aria-hidden
-        className="absolute top-2 bottom-2 left-1.75 w-px origin-top bg-accent"
+        className="absolute top-2 bottom-2 left-1.75 w-px origin-top bg-accent motion-reduce:transform-none!"
         style={{ scaleY: still ? 1 : scrollYProgress }}
       />
-      {items.map((item, i) => (
+      <ol className="space-y-12">
+        {items.map((item, i) => (
         <motion.li
           key={item.id}
-          className="relative md:grid md:grid-cols-[10rem_1fr] md:gap-8"
+          className="relative md:grid md:grid-cols-[10rem_1fr] md:gap-8 motion-reduce:transform-none! motion-reduce:opacity-100!"
           initial={hidden}
           {...(still
             ? { animate: shown, transition: { duration: 0 } }
@@ -62,7 +67,8 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
             <p className="mt-1 leading-[1.7] text-muted">{item.detail}</p>
           </div>
         </motion.li>
-      ))}
-    </ol>
+        ))}
+      </ol>
+    </div>
   );
 }
