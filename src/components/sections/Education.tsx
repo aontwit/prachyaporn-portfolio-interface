@@ -18,7 +18,7 @@ export async function Education() {
           {profile.education.map((e, i) => (
             <li key={e.id} className="relative md:grid md:grid-cols-[9rem_1fr] md:gap-6">
               {/* ticked in the margin, on the first line, like a teacher checking a list */}
-              <Tick delay={TICK_START + i * TICK_STEP} className="absolute top-1.5 -left-6 text-xl" />
+              <Tick delay={TICK_START + i * TICK_STEP} className="absolute top-1.5 -left-11 text-xl sm:-left-13" />
               <p className="font-hand text-sm leading-8 font-semibold text-ink-blue tabular-nums">{e.years}</p>
               <div>
                 <h3 className="font-hand text-base leading-8 font-semibold text-ink sm:text-lg">
