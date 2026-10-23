@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useEffect, useRef, type KeyboardEvent, type MouseEvent } from "react";
+import { useEffect, useRef, type CSSProperties, type KeyboardEvent, type MouseEvent } from "react";
+import { Polaroid } from "@/components/paper";
 import type { GalleryPhoto } from "./ActivityGallery";
 
 const FOCUSABLE = "button:not([disabled]), [href], [tabindex]:not([tabindex='-1'])";
@@ -16,7 +17,8 @@ function lockScroll(locked: boolean) {
 
 /**
  * Large view of one activity's photos in a native modal <dialog>: Esc closes (native),
- * ←/→ move within the activity, Tab stays inside, a tap outside the photo closes.
+ * ←/→ move within the activity, Tab stays inside, a tap outside the polaroid closes.
+ * The photo sits in a taped white polaroid frame with its handwritten caption.
  * The fade is CSS (`starting:` + `transition-discrete`), so reduced motion is a class, not a hook.
  */
 export function Lightbox({
@@ -81,12 +83,14 @@ export function Lightbox({
   }
 
   function handleClick(e: MouseEvent<HTMLDialogElement>) {
-    // Anywhere but the photo, its caption or a control counts as "outside".
-    if (!(e.target as Element).closest("img, figcaption, button")) close();
+    // Anywhere but the polaroid (photo, frame, caption) or a control counts as "outside".
+    if (!(e.target as Element).closest("figure, button")) close();
   }
 
+  // Round paper buttons: white sheet, ink icon, a sticky note's shadow. Two-tone focus ring (ink
+  // ring + white outline) so it shows on the dark backdrop and over the white polaroid frame.
   const iconButton =
-    "grid size-11 shrink-0 place-items-center rounded-full border border-sheet/30 bg-ink/50 text-sheet transition-colors hover:bg-sheet/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sheet motion-reduce:transition-none";
+    "grid size-11 shrink-0 place-items-center rounded-full bg-sheet text-ink shadow-note transition-colors hover:bg-note-yellow focus-visible:ring-2 focus-visible:ring-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sheet motion-reduce:transition-none";
 
   return (
     <dialog
@@ -117,22 +121,29 @@ export function Lightbox({
         </div>
         <div className="relative flex min-h-0 flex-1 items-center justify-center">
           {photo && (
-            <figure className="flex flex-col items-center gap-3 py-3">
-              <Image
-                key={photo.id}
-                src={photo.src}
-                alt={photo.alt}
-                width={photo.width}
-                height={photo.height}
-                sizes="100vw"
-                className="h-auto rounded-[20px]"
-                // Fit inside the space left by the bars and caption, keeping the photo's own ratio.
-                style={{ width: `min(100%, calc((100dvh - 13rem) * ${photo.width / photo.height}))` }}
-              />
-              <figcaption aria-hidden="true" className="max-w-2xl text-center text-sm leading-[1.7] text-sheet/90">
-                {photo.alt}
-              </figcaption>
-            </figure>
+            // The polaroid's width fits the photo inside the space left by the bars, the frame and
+            // the caption, keeping the photo's own ratio (--ratio); the photo fills the frame.
+            <div className="flex w-full justify-center py-6" style={{ "--ratio": photo.width / photo.height } as CSSProperties}>
+              <Polaroid
+                rotate={-1}
+                caption={
+                  <span aria-hidden="true" className="mx-auto block max-w-2xl text-sm">
+                    {photo.alt}
+                  </span>
+                }
+                className="w-[min(100%,max(8rem,calc((100dvh-16rem)*var(--ratio)+1.75rem)))]"
+              >
+                <Image
+                  key={photo.id}
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={photo.width}
+                  height={photo.height}
+                  sizes="100vw"
+                  className="h-auto w-full"
+                />
+              </Polaroid>
+            </div>
           )}
           {multiple && (
             <>
