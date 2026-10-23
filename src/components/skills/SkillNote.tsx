@@ -6,14 +6,16 @@ import { StickyNote } from "@/components/paper";
 import type { NoteColor } from "@/components/paper/StickyNote";
 import type { doodles } from "@/content/doodles";
 
-type Doodle = (typeof doodles)[number];
+// Only what the image needs crosses to the client (not the prompt or seed).
+type Doodle = Pick<(typeof doodles)[number], "src" | "width" | "height">;
 
 // Hover / keyboard focus: the note lifts and straightens. Only when the OS allows motion
 // (`motion-safe:`) and the pause pill is off. `paused` is false on the server and in the hydration
 // render (MotionPauseProvider reads the OS through a server snapshot), so the SSR markup always
 // carries these classes and the client drops them only in a later render — never a mismatch.
+// Paused → no transition either, so a lifted note snaps back instead of easing down.
 const LIFT =
-  "motion-safe:group-hover:-translate-y-1.5 motion-safe:group-hover:rotate-0 motion-safe:group-focus-visible:-translate-y-1.5 motion-safe:group-focus-visible:rotate-0";
+  "transition-[translate,rotate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none motion-safe:group-hover:-translate-y-1.5 motion-safe:group-hover:rotate-0 motion-safe:group-focus-visible:-translate-y-1.5 motion-safe:group-focus-visible:rotate-0";
 
 /**
  * One skill as a sticky note with its crayon doodle (decorative). The article is focusable so a
@@ -44,7 +46,7 @@ export function SkillNote({
         color={color}
         rotate={rotate}
         delay={delay}
-        className={`h-full transition-[translate,rotate,box-shadow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:shadow-polaroid group-focus-visible:shadow-polaroid group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-ink-blue motion-reduce:transition-none sm:px-6 sm:py-6 ${paused ? "" : LIFT}`}
+        className={`h-full group-hover:shadow-polaroid group-focus-visible:shadow-polaroid group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-ink-blue sm:px-6 sm:py-6 ${paused ? "" : LIFT}`}
       >
         <Image
           src={doodle.src}

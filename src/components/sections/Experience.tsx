@@ -5,7 +5,7 @@ import { profile } from "@/content/profile";
 
 // Two wobbles of a short crayon dash, and the crayons that draw them, taken in turn per point.
 const DASHES = ["M1.5 5.2c3.1-1.1 6.4-1.6 9.7-1.2 2.4.3 4.4.6 7.3.1", "M1.4 4.1c2.8.8 5.9 1 9.1.5 2.6-.4 4.9-.9 7.8-.4"];
-const CRAYONS = ["text-crayon-pink", "text-crayon-green", "text-crayon-blue"];
+const CRAYONS = ["stroke-crayon-pink", "stroke-crayon-green", "stroke-crayon-blue"];
 
 /** A short crayon dash as a list bullet, centred on the first 32px line of its point. */
 function CrayonDash({ index }: { index: number }) {
@@ -17,7 +17,7 @@ function CrayonDash({ index }: { index: number }) {
       fill="none"
       className={`absolute top-3 left-0 h-[9px] w-5 ${CRAYONS[index % CRAYONS.length]}`}
     >
-      <path d={DASHES[index % DASHES.length]} stroke="currentColor" strokeWidth={2.6} strokeLinecap="round" />
+      <path d={DASHES[index % DASHES.length]} strokeWidth={2.6} strokeLinecap="round" />
     </svg>
   );
 }
