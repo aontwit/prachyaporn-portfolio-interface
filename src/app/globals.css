@@ -24,7 +24,6 @@
 
   /* Sheet margin line: ~36px on phones, ~52px from 640px up. */
   --margin-x: 36px;
-
 }
 
 @media (width >= 40rem) {
@@ -52,7 +51,6 @@
   --color-note-blue: var(--note-blue);
   --color-note-pink: var(--note-pink);
   --color-sheet: var(--sheet);
-
 
   /* drop-shadow under paper cut-outs (the hero portrait sticker) */
   --drop-shadow-cutout: 0 8px 14px color-mix(in srgb, var(--ink) 18%, transparent);

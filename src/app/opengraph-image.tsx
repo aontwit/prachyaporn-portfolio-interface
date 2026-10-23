@@ -22,7 +22,6 @@ const TOKENS = {
   ink: "#2b3a42",
   pencil: "#5d6b72",
   inkBlue: "#2f5f93",
-  crayonGreen: "#7fb08a",
   tape: "rgba(242, 201, 76, 0.55)",
 } as const;
 
@@ -45,8 +44,8 @@ export default async function OpengraphImage() {
   const [mali, sans, portrait] = await Promise.all([
     googleFont("Mali", 700, name + latinName),
     googleFont("IBM Plex Sans Thai", 400, role + location),
-    // the hero's cut-out sticker (blue studio background removed) — PNG, which Satori decodes
-    readFile(join(process.cwd(), "public/images/portrait-cutout.png"), "base64"),
+    // the hero's cut-out sticker at OG size, as PNG (Satori does not decode WebP); kept outside public/
+    readFile(join(process.cwd(), "assets/portrait-cutout-og.png"), "base64"),
   ]);
   return new ImageResponse(
     (
@@ -78,11 +77,12 @@ export default async function OpengraphImage() {
           </div>
         </div>
         <div style={{ position: "relative", display: "flex", transform: "rotate(2deg)" }}>
-          <div
-            style={{ position: "absolute", top: -12, left: 140, width: 120, height: 32, background: TOKENS.tape, transform: "rotate(-3deg)" }}
-          />
           {/* eslint-disable-next-line @next/next/no-img-element -- Satori renders plain <img>, next/image does not apply here */}
-          <img src={`data:image/png;base64,${portrait}`} alt="" width={404} height={499} />
+          <img src={`data:image/png;base64,${portrait}`} alt="" width={348} height={430} />
+          {/* tape after the sticker: Satori paints in document order, so it sits over the edge it holds */}
+          <div
+            style={{ position: "absolute", top: -6, left: 114, width: 120, height: 32, background: TOKENS.tape, transform: "rotate(-3deg)" }}
+          />
         </div>
       </div>
     ),
