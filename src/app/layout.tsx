@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans_Thai, Noto_Serif_Thai } from "next/font/google";
+import { IBM_Plex_Sans_Thai, Mali } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getTranslations } from "next-intl/server";
 import { Footer } from "@/components/Footer";
@@ -15,10 +15,11 @@ const body = IBM_Plex_Sans_Thai({
   weight: ["300", "400", "500", "600"],
 });
 
-const heading = Noto_Serif_Thai({
-  variable: "--font-heading",
+// Handwriting (DESIGN.md "Type"): headings, nav, labels, captions, notes — the `font-hand` utility.
+const hand = Mali({
+  variable: "--font-mali",
   subsets: ["thai", "latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
 });
 
 // Open Graph locale per reader language (cookie); the other one is the alternate.
@@ -46,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const locale = await getLocale();
   return (
-    <html lang={locale} className={`${body.variable} ${heading.variable}`}>
+    <html lang={locale} className={`${body.variable} ${hand.variable}`}>
       <body className="min-h-dvh">
         <NextIntlClientProvider>
           <MotionPauseProvider>
