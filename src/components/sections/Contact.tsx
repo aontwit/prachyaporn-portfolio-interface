@@ -32,11 +32,11 @@ export async function Contact() {
 
   return (
     <Section id="contact" title={t("contact.title")}>
-      <div className="relative overflow-hidden rounded-3xl border border-line bg-surface p-5 pl-7 sm:p-10 sm:pl-12">
-        <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-sky" />
+      <div className="relative overflow-hidden rounded-3xl border border-rule bg-sheet p-5 pl-7 sm:p-10 sm:pl-12">
+        <span aria-hidden="true" className="absolute inset-y-0 left-0 w-1.5 bg-grid-strong" />
         <p className="max-w-prose text-lg leading-relaxed text-ink">{t("contact.intro")}</p>
-        <p className="mt-3 flex items-center gap-2 text-sm text-muted">
-          <Icon name="place" className="size-4 shrink-0 text-accent" />
+        <p className="mt-3 flex items-center gap-2 text-sm text-pencil">
+          <Icon name="place" className="size-4 shrink-0 text-crayon-blue" />
           {t("profile.location")}
         </p>
         <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -44,13 +44,13 @@ export async function Contact() {
             <li key={a.icon}>
               <a
                 href={a.href}
-                className="group flex min-h-16 items-center gap-3 rounded-[1.25rem] border border-line px-3 py-3 sm:gap-4 sm:px-4 transition-colors hover:border-accent hover:bg-accent-soft/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                className="group flex min-h-16 items-center gap-3 rounded-[1.25rem] border border-rule px-3 py-3 sm:gap-4 sm:px-4 transition-colors hover:border-crayon-blue hover:bg-note-blue/40 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-crayon-blue"
               >
-                <span className="grid size-11 shrink-0 place-items-center rounded-full border border-line text-accent transition-colors group-hover:border-accent">
+                <span className="grid size-11 shrink-0 place-items-center rounded-full border border-rule text-crayon-blue transition-colors group-hover:border-crayon-blue">
                   <Icon name={a.icon} className="size-5" />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-xs tracking-[.12em] text-muted uppercase">{a.label}</span>
+                  <span className="block text-xs tracking-[.12em] text-pencil uppercase">{a.label}</span>
                   <span className="block text-base [overflow-wrap:anywhere] text-ink">{a.value}</span>
                 </span>
               </a>

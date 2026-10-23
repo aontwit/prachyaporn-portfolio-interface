@@ -42,7 +42,7 @@ export function ActivityGallery({
                 type="button"
                 aria-haspopup="dialog"
                 onClick={() => setView({ index: i, open: true })}
-                className="group block w-full cursor-zoom-in rounded-[28px] bg-sand p-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                className="group block w-full cursor-zoom-in rounded-[28px] bg-note-yellow p-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-crayon-blue"
               >
                 <span className="block overflow-hidden rounded-[20px]">
                   <Image
@@ -57,7 +57,7 @@ export function ActivityGallery({
                 </span>
               </button>
               {/* Same text as the alt above, shown for sighted readers; hidden so it is not read twice. */}
-              <figcaption aria-hidden="true" className="mt-2 px-3 text-sm leading-[1.7] text-muted">
+              <figcaption aria-hidden="true" className="mt-2 px-3 text-sm leading-[1.7] text-pencil">
                 {photo.alt}
               </figcaption>
             </figure>

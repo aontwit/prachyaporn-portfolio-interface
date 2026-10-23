@@ -86,7 +86,7 @@ export function Lightbox({
   }
 
   const iconButton =
-    "grid size-11 shrink-0 place-items-center rounded-full border border-surface/30 bg-ink/50 text-surface transition-colors hover:bg-surface/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface motion-reduce:transition-none";
+    "grid size-11 shrink-0 place-items-center rounded-full border border-sheet/30 bg-ink/50 text-sheet transition-colors hover:bg-sheet/20 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sheet motion-reduce:transition-none";
 
   return (
     <dialog
@@ -100,12 +100,12 @@ export function Lightbox({
       }}
       onKeyDown={handleKeyDown}
       onClick={handleClick}
-      className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-ink/95 p-0 text-surface opacity-0 transition-[opacity,overlay,display] transition-discrete duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] backdrop:bg-transparent open:opacity-100 starting:open:opacity-0 motion-reduce:transition-none"
+      className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none border-0 bg-ink/95 p-0 text-sheet opacity-0 transition-[opacity,overlay,display] transition-discrete duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] backdrop:bg-transparent open:opacity-100 starting:open:opacity-0 motion-reduce:transition-none"
     >
       <div className="flex h-full flex-col px-4 py-3 sm:px-6 sm:py-4">
         <div className="flex items-center justify-between gap-4">
           {/* Announces the counter and the new photo's alt on every ←/→; the visible caption is hidden from AT. */}
-          <p className="text-sm text-surface/80" aria-live="polite">
+          <p className="text-sm text-sheet/80" aria-live="polite">
             {index !== null && t("counter", { current: index + 1, total: photos.length })}
             {photo && <span className="sr-only"> — {photo.alt}</span>}
           </p>
@@ -129,7 +129,7 @@ export function Lightbox({
                 // Fit inside the space left by the bars and caption, keeping the photo's own ratio.
                 style={{ width: `min(100%, calc((100dvh - 13rem) * ${photo.width / photo.height}))` }}
               />
-              <figcaption aria-hidden="true" className="max-w-2xl text-center text-sm leading-[1.7] text-surface/90">
+              <figcaption aria-hidden="true" className="max-w-2xl text-center text-sm leading-[1.7] text-sheet/90">
                 {photo.alt}
               </figcaption>
             </figure>

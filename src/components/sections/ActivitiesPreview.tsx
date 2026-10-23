@@ -35,7 +35,7 @@ export async function ActivitiesPreview() {
       </ul>
       <Link
         href="/activities"
-        className="mt-10 inline-flex min-h-11 items-center text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        className="mt-10 inline-flex min-h-11 items-center text-crayon-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-crayon-blue"
       >
         {t("seeAll")} →
       </Link>

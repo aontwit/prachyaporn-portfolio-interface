@@ -35,10 +35,10 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
 
   return (
     <div ref={ref} className="relative pl-10 sm:pl-14">
-      <span aria-hidden className="absolute top-2 bottom-2 left-1.75 w-px bg-line" />
+      <span aria-hidden className="absolute top-2 bottom-2 left-1.75 w-px bg-rule" />
       <motion.span
         aria-hidden
-        className="absolute top-2 bottom-2 left-1.75 w-px origin-top bg-accent motion-reduce:transform-none!"
+        className="absolute top-2 bottom-2 left-1.75 w-px origin-top bg-crayon-blue motion-reduce:transform-none!"
         style={{ scaleY: still ? 1 : scrollYProgress }}
       />
       <ol className="space-y-12">
@@ -57,14 +57,14 @@ export function Timeline({ items }: { items: TimelineItem[] }) {
         >
           <span
             aria-hidden
-            className="absolute top-0.75 -left-10 grid size-3.75 place-items-center rounded-full border border-accent bg-bg sm:-left-14"
+            className="absolute top-0.75 -left-10 grid size-3.75 place-items-center rounded-full border border-crayon-blue bg-paper sm:-left-14"
           >
-            <span className="size-1.25 rounded-full bg-accent" />
+            <span className="size-1.25 rounded-full bg-crayon-blue" />
           </span>
-          <p className="text-sm tracking-[0.12em] text-accent tabular-nums">{item.years}</p>
+          <p className="text-sm tracking-[0.12em] text-crayon-blue tabular-nums">{item.years}</p>
           <div className="mt-2 md:mt-0">
-            <h3 className="font-display text-xl leading-[1.6] text-ink sm:text-2xl">{item.school}</h3>
-            <p className="mt-1 leading-[1.7] text-muted">{item.detail}</p>
+            <h3 className="font-hand text-xl leading-[1.6] text-ink sm:text-2xl">{item.school}</h3>
+            <p className="mt-1 leading-[1.7] text-pencil">{item.detail}</p>
           </div>
         </motion.li>
         ))}
