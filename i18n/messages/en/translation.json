@@ -35,7 +35,8 @@
   },
   "about": {
     "label": "In brief",
-    "basedIn": "Based in"
+    "basedIn": "Based in",
+    "keyPhrase": "Active Learning"
   },
   "hero": {
     "greeting": "Hello, I'm",
