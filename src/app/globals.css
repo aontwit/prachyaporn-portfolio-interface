@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+/* Cool, calm palette: mist, sage-teal, sky. One source of truth for colour. */
+:root {
+  --bg: #f3f7f6;
+  --surface: #ffffff;
+  --ink: #1d2a30;
+  --muted: #5a6a70;
+  --line: #d9e4e2;
+  --accent: #3f7f80;
+  --accent-soft: #dcebe9;
+  --sky: #a8c6d6;
+  --sand: #efe9df;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-sky: var(--sky);
+  --color-sand: var(--sand);
+  --font-sans: var(--font-body);
+  --font-display: var(--font-heading);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
