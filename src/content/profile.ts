@@ -1,8 +1,7 @@
 // Facts that are the same in every language. Text lives in i18n/messages/<lang>/translation.json.
 // Source: resume.jpg (client-provided). Only email + phone are public, per the client.
 export const profile = {
-  portrait: "/images/portrait.jpg",
-  /** Same photo, blue studio background removed, white paper border (hero sticker). */
+  /** The teacher's photo, blue studio background removed, white paper border (hero sticker). */
   portraitCutout: "/images/portrait-cutout.webp",
   email: "Prachyaporn2543@gmail.com",
   phone: "084-004-6732",

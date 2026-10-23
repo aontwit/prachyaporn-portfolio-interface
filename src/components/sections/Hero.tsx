@@ -33,7 +33,7 @@ function Arrow({ down = false }: { down?: boolean }) {
 const PILL =
   "group inline-flex min-h-12 items-center gap-2 rounded-[255px_18px_225px_18px/18px_225px_18px_255px] border-2 px-6 py-2 font-hand text-base leading-[1.6] transition-[background-color,border-color,translate] duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-blue motion-safe:hover:-translate-y-0.5 motion-reduce:transition-none sm:text-lg";
 
-/** Notebook hero (DESIGN.md): handwritten name and pen marks left, taped polaroid right, paper cut-out stage below. */
+/** Notebook hero (DESIGN.md): handwritten name and pen marks left, taped cut-out portrait right, paper cut-out stage below. */
 export async function Hero() {
   const [t, locale] = await Promise.all([getTranslations(), getLocale()]);
   const thai = locale === "th";
@@ -104,11 +104,11 @@ export async function Hero() {
           <Image
             src={profile.portraitCutout}
             alt={t("profile.name")}
-            width={466}
-            height={577}
+            width={474}
+            height={585}
             preload
             sizes="(min-width: 640px) 288px, 256px"
-            className="block h-auto w-full drop-shadow-[0_8px_14px_color-mix(in_oklab,var(--ink)_18%,transparent)]"
+            className="block h-auto w-full drop-shadow-cutout"
           />
           <figcaption className="mt-2 text-center font-hand text-base leading-8 text-pencil">
             {t("hero.caption")} <span aria-hidden="true">♡</span>
@@ -116,7 +116,7 @@ export async function Hero() {
         </figure>
       </div>
 
-      {/* The paper cut-out stage: below the copy and the polaroid, never over them. */}
+      {/* The paper cut-out stage: below the copy and the portrait, never over them. */}
       <div className="relative mt-4 h-52 sm:h-60 lg:h-72">
         <HeroScene />
       </div>

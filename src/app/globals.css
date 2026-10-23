@@ -24,17 +24,6 @@
 
   /* Sheet margin line: ~36px on phones, ~52px from 640px up. */
   --margin-x: 36px;
-
-  /*
-   * Phase 1 names, kept only for src/components/hero/**, which P2-02 rebuilds: `text-accent`
-   * (hero/HandUnderline) and the raw vars in hero/HeroScene + hero/SceneCanvas. Each points at the
-   * nearest notebook token; delete with that row. Never use them in new code.
-   */
-  --surface: var(--sheet);
-  --accent: var(--crayon-blue);
-  --accent-soft: var(--note-blue);
-  --sky: var(--grid-strong);
-  --sand: var(--note-yellow);
 }
 
 @media (width >= 40rem) {
@@ -63,8 +52,8 @@
   --color-note-pink: var(--note-pink);
   --color-sheet: var(--sheet);
 
-  /* Phase 1 alias (see :root) — hero/** only. */
-  --color-accent: var(--accent);
+  /* drop-shadow under paper cut-outs (the hero portrait sticker) */
+  --drop-shadow-cutout: 0 8px 14px color-mix(in srgb, var(--ink) 18%, transparent);
 
   --font-sans: var(--font-body);
   --font-hand: var(--font-mali);
