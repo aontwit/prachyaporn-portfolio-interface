@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { Reveal } from "@/components/Reveal";
+import { DropIn, Polaroid } from "@/components/paper";
 import { Lightbox } from "./Lightbox";
+import { polaroidTilt } from "./tilt";
 
 /** A photo as the gallery shows it: the facts from `src/content/` plus its alt text in the reader's language. */
 export type GalleryPhoto = { id: string; src: string; width: number; height: number; alt: string };
@@ -11,15 +12,18 @@ export type GalleryPhoto = { id: string; src: string; width: number; height: num
 /** `null` until the first open, so the lightbox renders (and downloads) no large photo before it is asked for. */
 type View = { index: number; open: boolean } | null;
 
-/** One activity's photos: masonry columns of framed photos, each opening the lightbox. */
+/** One activity's photos: masonry columns of taped polaroids with handwritten captions, each opening the lightbox. */
 export function ActivityGallery({
   title,
   photos,
   preloadFirst = false,
+  tiltOffset = 0,
 }: {
   title: string;
   photos: GalleryPhoto[];
   preloadFirst?: boolean;
+  /** Where this gallery starts in the shared tilt cycle, so neighbouring activities lean differently. */
+  tiltOffset?: number;
 }) {
   const [view, setView] = useState<View>(null);
   const triggers = useRef<(HTMLButtonElement | null)[]>([]);
@@ -31,20 +35,26 @@ export function ActivityGallery({
 
   return (
     <>
-      <div className={single ? undefined : "gap-4 sm:columns-2"}>
-        {photos.map((photo, i) => (
-          <Reveal key={photo.id} delay={i * 0.08} className="mb-6 break-inside-avoid">
-            <figure>
-              <button
-                ref={(el) => {
-                  triggers.current[i] = el;
-                }}
-                type="button"
-                aria-haspopup="dialog"
-                onClick={() => setView({ index: i, open: true })}
-                className="group block w-full cursor-zoom-in rounded-[28px] bg-note-yellow p-2 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-crayon-blue"
+      <div className={single ? undefined : "gap-8 sm:columns-2"}>
+        {photos.map((photo, i) => {
+          const rotate = polaroidTilt(tiltOffset + i);
+          return (
+            // pt-4 keeps the polaroid's tape inside this box, so CSS columns never split it off.
+            <DropIn key={photo.id} tilt={rotate} delay={i * 0.08} className="mb-8 break-inside-avoid pt-4">
+              <Polaroid
+                rotate={rotate}
+                // Same text as the photo's alt, shown for sighted readers; hidden so it is not read twice.
+                caption={<span aria-hidden="true">{photo.alt}</span>}
               >
-                <span className="block overflow-hidden rounded-[20px]">
+                <button
+                  ref={(el) => {
+                    triggers.current[i] = el;
+                  }}
+                  type="button"
+                  aria-haspopup="dialog"
+                  onClick={() => setView({ index: i, open: true })}
+                  className="group block w-full cursor-zoom-in overflow-hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-blue"
+                >
                   <Image
                     src={photo.src}
                     alt={photo.alt}
@@ -54,15 +64,11 @@ export function ActivityGallery({
                     preload={preloadFirst && i === 0}
                     className="h-auto w-full transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                   />
-                </span>
-              </button>
-              {/* Same text as the alt above, shown for sighted readers; hidden so it is not read twice. */}
-              <figcaption aria-hidden="true" className="mt-2 px-3 text-sm leading-[1.7] text-pencil">
-                {photo.alt}
-              </figcaption>
-            </figure>
-          </Reveal>
-        ))}
+                </button>
+              </Polaroid>
+            </DropIn>
+          );
+        })}
       </div>
       <Lightbox
         title={title}
