@@ -32,9 +32,10 @@
   },
   "hero": {
     "greeting": "Hello, I'm",
-    "tagline": "A teacher who believes every child learns best by doing.",
+    "tagline": "A teacher who believes every child learns best by <drawn>doing</drawn>.",
     "cta": "See activities",
-    "contactCta": "Get in touch"
+    "contactCta": "Get in touch",
+    "scroll": "Scroll to explore"
   },
   "education": {
     "label": "Learning path",
