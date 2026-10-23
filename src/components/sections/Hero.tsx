@@ -5,7 +5,7 @@ import { Fragment } from "react";
 import { HandUnderline } from "@/components/hero/HandUnderline";
 import { HeroIntro, HeroIntroItem } from "@/components/hero/HeroIntro";
 import { HeroScene } from "@/components/hero/HeroScene";
-import { Highlighter, Polaroid } from "@/components/paper";
+import { Highlighter, Tape } from "@/components/paper";
 import { profile } from "@/content/profile";
 
 function Arrow({ down = false }: { down?: boolean }) {
@@ -98,26 +98,22 @@ export async function Hero() {
           </HeroIntroItem>
         </HeroIntro>
 
-        <div className="mx-auto w-full max-w-64 sm:max-w-72">
-          <Polaroid
-            rotate={2.5}
-            caption={
-              <>
-                {t("hero.caption")} <span aria-hidden="true">♡</span>
-              </>
-            }
-          >
-            <Image
-              src={profile.portrait}
-              alt={t("profile.name")}
-              width={390}
-              height={470}
-              preload
-              sizes="(min-width: 640px) 260px, 230px"
-              className="block h-auto w-full"
-            />
-          </Polaroid>
-        </div>
+        {/* The teacher as a cut-out sticker (blue studio background removed), taped into the notebook. */}
+        <figure className="relative mx-auto w-full max-w-64 rotate-2 sm:max-w-72">
+          <Tape className="left-1/2 -translate-x-1/2 -rotate-3" />
+          <Image
+            src={profile.portraitCutout}
+            alt={t("profile.name")}
+            width={466}
+            height={577}
+            preload
+            sizes="(min-width: 640px) 288px, 256px"
+            className="block h-auto w-full drop-shadow-[0_8px_14px_color-mix(in_oklab,var(--ink)_18%,transparent)]"
+          />
+          <figcaption className="mt-2 text-center font-hand text-base leading-8 text-pencil">
+            {t("hero.caption")} <span aria-hidden="true">♡</span>
+          </figcaption>
+        </figure>
       </div>
 
       {/* The paper cut-out stage: below the copy and the polaroid, never over them. */}

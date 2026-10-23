@@ -2,6 +2,8 @@
 // Source: resume.jpg (client-provided). Only email + phone are public, per the client.
 export const profile = {
   portrait: "/images/portrait.jpg",
+  /** Same photo, blue studio background removed, white paper border (hero sticker). */
+  portraitCutout: "/images/portrait-cutout.webp",
   email: "Prachyaporn2543@gmail.com",
   phone: "084-004-6732",
   phoneHref: "tel:+66840046732",
