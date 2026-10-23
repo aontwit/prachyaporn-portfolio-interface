@@ -3,7 +3,7 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useMotionPause } from "@/components/MotionPause";
 
-// One hand-drawn mark style (DESIGN.md): accent stroke, 1.5px, a slightly irregular path drawn
+// One hand-drawn mark style (DESIGN.md): crayon-blue stroke, 1.5px, a slightly irregular path drawn
 // with pathLength 0 → 1. The ellipse overshoots its start like a pen circling an answer.
 const ELLIPSE = "M60 5.5C88 3.8 115 10.5 115.5 23.5C116 37.5 88 45 57 44.2C27 43.5 4.5 36 5 22.8C5.6 10.4 31 4.2 66 7.6";
 const UNDERLINE = "M2 6.4C18 4.2 36 7.4 55 5.6C72 4 86 5.2 98 6.8";
@@ -21,7 +21,7 @@ function Stroke({ d, viewBox, className }: { d: string; viewBox: string; classNa
       viewBox={viewBox}
       preserveAspectRatio="none"
       fill="none"
-      className={`pointer-events-none absolute overflow-visible text-accent ${className}`}
+      className={`pointer-events-none absolute overflow-visible text-crayon-blue ${className}`}
     >
       <motion.path
         d={d}

@@ -26,15 +26,11 @@
   --margin-x: 36px;
 
   /*
-   * Phase 1 names, kept only for src/components/nav/** and src/components/hero/**, which
-   * P2-07 and P2-02 rebuild. Each points at the nearest notebook token; delete with those rows.
-   * Never use them in new code. paper/PenCircle gets its stroke colour through nav/HandDrawn's
-   * `text-accent`: HandDrawn moves to `text-crayon-blue` in the same change that deletes these.
+   * Phase 1 names, kept only for src/components/hero/**, which P2-02 rebuilds: `text-accent`
+   * (hero/HandUnderline) and the raw vars in hero/HeroScene + hero/SceneCanvas. Each points at the
+   * nearest notebook token; delete with that row. Never use them in new code.
    */
-  --bg: var(--paper);
   --surface: var(--sheet);
-  --muted: var(--pencil);
-  --line: var(--rule);
   --accent: var(--crayon-blue);
   --accent-soft: var(--note-blue);
   --sky: var(--grid-strong);
@@ -67,16 +63,8 @@
   --color-note-pink: var(--note-pink);
   --color-sheet: var(--sheet);
 
-  /* Phase 1 aliases (see :root) — nav/** and hero/** only. */
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-muted: var(--muted);
-  --color-line: var(--line);
+  /* Phase 1 alias (see :root) — hero/** only. */
   --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-sky: var(--sky);
-  --color-sand: var(--sand);
-  --font-display: var(--font-mali);
 
   --font-sans: var(--font-body);
   --font-hand: var(--font-mali);
