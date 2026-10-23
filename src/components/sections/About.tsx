@@ -46,10 +46,14 @@ export async function About() {
         <p className="max-w-3xl text-base leading-8 text-ink sm:text-lg">
           {before}
           {phrase && (
-            <span className="mx-1.5 whitespace-nowrap">
-              {open}
-              <PenCircle>{phrase}</PenCircle>
-              {close}
+            <span className="whitespace-nowrap">
+              {/* the pen circles the bracket pair with the phrase; trailing "." "," stay outside */}
+              <PenCircle>
+                {open}
+                {phrase}
+                {open ? close.slice(0, 1) : ""}
+              </PenCircle>
+              {open ? close.slice(1) : close}
             </span>
           )}
           {after}
