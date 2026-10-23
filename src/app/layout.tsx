@@ -52,7 +52,8 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
         <NextIntlClientProvider>
           <MotionPauseProvider>
             <Header />
-            <main id="content">{children}</main>
+            {/* overflow-x-clip: tilted paper may poke a pixel past the edge on phones; clip (not hidden) keeps sticky children working */}
+            <main id="content" className="overflow-x-clip">{children}</main>
             <Footer />
           </MotionPauseProvider>
         </NextIntlClientProvider>
