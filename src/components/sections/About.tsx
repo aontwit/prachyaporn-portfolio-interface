@@ -19,21 +19,21 @@ export async function About() {
   const [lead, rest] = splitLead(t("profile.summary"));
   return (
     <Section id="about" title={t("nav.about")}>
-      <p className="mb-12 border-t border-line pt-3 text-xs leading-[1.6] tracking-[0.12em] text-muted uppercase">
+      <p className="mb-12 border-t border-rule pt-3 text-xs leading-[1.6] tracking-[0.12em] text-pencil uppercase">
         {t("about.label")}
       </p>
       <div className="grid gap-12 md:grid-cols-[1fr_12rem] md:gap-16">
         <div>
           {lead && (
-            <p className={`font-display mb-8 text-2xl text-ink sm:text-4xl ${thai ? "leading-[1.6]" : "leading-[1.3]"}`}>
+            <p className={`font-hand mb-8 text-2xl text-ink sm:text-4xl ${thai ? "leading-[1.6]" : "leading-[1.3]"}`}>
               {lead}
             </p>
           )}
-          {rest && <p className="max-w-xl text-lg leading-[1.8] text-muted">{rest}</p>}
+          {rest && <p className="max-w-xl text-lg leading-[1.8] text-pencil">{rest}</p>}
         </div>
-        <aside className="border-t border-line pt-3">
-          <p className="text-xs leading-[1.6] tracking-[0.12em] text-muted uppercase">{t("about.basedIn")}</p>
-          <p className="font-display mt-2 text-lg leading-[1.6] text-ink">{t("profile.location")}</p>
+        <aside className="border-t border-rule pt-3">
+          <p className="text-xs leading-[1.6] tracking-[0.12em] text-pencil uppercase">{t("about.basedIn")}</p>
+          <p className="font-hand mt-2 text-lg leading-[1.6] text-ink">{t("profile.location")}</p>
         </aside>
       </div>
     </Section>

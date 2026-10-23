@@ -38,7 +38,7 @@ export function LanguageSwitch() {
       {LOCALES.map((l, i) => (
         <span key={l} className="flex items-center gap-1">
           {i > 0 && (
-            <span aria-hidden="true" className="text-line">
+            <span aria-hidden="true" className="text-rule">
               /
             </span>
           )}
@@ -48,7 +48,7 @@ export function LanguageSwitch() {
             aria-pressed={l === locale}
             disabled={pending}
             onClick={() => l !== locale && choose(l)}
-            className={`relative inline-flex min-h-11 items-center px-1.5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent ${l === locale ? "text-ink" : "text-muted hover:text-ink"}`}
+            className={`relative inline-flex min-h-11 items-center px-1.5 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-crayon-blue ${l === locale ? "text-ink" : "text-pencil hover:text-ink"}`}
           >
             <span className="relative">
               {t(l)}

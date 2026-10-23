@@ -20,9 +20,9 @@ export function ActivityCard({
   return (
     <Link
       href={href}
-      className="group block h-full rounded-[28px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+      className="group block h-full rounded-[28px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-crayon-blue"
     >
-      <span className="block rounded-[28px] bg-sand p-2">
+      <span className="block rounded-[28px] bg-note-yellow p-2">
         <span className="block overflow-hidden rounded-[20px]">
           {/* Decorative here: the title below names the link; the photo's alt is read on /activities. */}
           <Image
@@ -37,14 +37,14 @@ export function ActivityCard({
       </span>
       <div className="px-2 pt-4">
         {date && (
-          <time dateTime={date.iso} className="block text-sm tracking-[0.06em] text-accent">
+          <time dateTime={date.iso} className="block text-sm tracking-[0.06em] text-crayon-blue">
             {date.label}
           </time>
         )}
-        <h3 className="font-display mt-1 text-xl leading-[1.6] text-ink transition-colors group-hover:text-accent motion-reduce:transition-none">
+        <h3 className="font-hand mt-1 text-xl leading-[1.6] text-ink transition-colors group-hover:text-crayon-blue motion-reduce:transition-none">
           {title}
         </h3>
-        <p className="mt-2 line-clamp-3 text-sm leading-[1.8] text-muted">{summary}</p>
+        <p className="mt-2 line-clamp-3 text-sm leading-[1.8] text-pencil">{summary}</p>
       </div>
     </Link>
   );

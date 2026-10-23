@@ -13,7 +13,7 @@ export async function Education() {
   }));
   return (
     <Section id="education" title={t("nav.education")}>
-      <p className="mb-12 border-t border-line pt-3 text-xs leading-[1.6] tracking-[0.12em] text-muted uppercase">
+      <p className="mb-12 border-t border-rule pt-3 text-xs leading-[1.6] tracking-[0.12em] text-pencil uppercase">
         {t("education.label")}
       </p>
       <Timeline items={items} />

@@ -1,45 +1,148 @@
 @import "tailwindcss";
 
-/* Cool, calm palette: mist, sage-teal, sky. One source of truth for colour. */
+/* "The teacher's notebook" palette (DESIGN.md). The one place hex lives. */
 :root {
-  --bg: #f3f7f6;
-  --surface: #ffffff;
-  --ink: #1d2a30;
-  --muted: #5a6a70;
-  --line: #d9e4e2;
-  --accent: #3f7f80;
-  --accent-soft: #dcebe9;
-  --sky: #a8c6d6;
-  --sand: #efe9df;
+  --paper: #fbfaf5;
+  --grid: #cfe0ec;
+  --grid-strong: #b7cfe0;
+  --rule: #c9dbe8;
+  --margin: #e8a0a0;
+  --ink: #2b3a42;
+  --pencil: #5d6b72;
+  --crayon-blue: #5b8fc9;
+  --crayon-green: #7fb08a;
+  --crayon-yellow: #f2c94c;
+  --crayon-pink: #ef9aa8;
+  --tape: rgba(242, 201, 76, 0.55);
+  --note-yellow: #fff6c9;
+  --note-green: #e3f1e6;
+  --note-blue: #e4eef8;
+  --note-pink: #fde4e8;
+  --sheet: #ffffff;
+
+  /* Sheet margin line: ~36px on phones, ~52px from 640px up. */
+  --margin-x: 36px;
+
+  /*
+   * Phase 1 names, kept only for src/components/nav/** and src/components/hero/**, which
+   * P2-07 and P2-02 rebuild. Each points at the nearest notebook token; delete with those rows.
+   * Never use them in new code. paper/PenCircle gets its stroke colour through nav/HandDrawn's
+   * `text-accent`: HandDrawn moves to `text-crayon-blue` in the same change that deletes these.
+   */
+  --bg: var(--paper);
+  --surface: var(--sheet);
+  --muted: var(--pencil);
+  --line: var(--rule);
+  --accent: var(--crayon-blue);
+  --accent-soft: var(--note-blue);
+  --sky: var(--grid-strong);
+  --sand: var(--note-yellow);
+}
+
+@media (width >= 40rem) {
+  :root {
+    --margin-x: 52px;
+  }
 }
 
 @theme inline {
+  --color-paper: var(--paper);
+  --color-grid: var(--grid);
+  --color-grid-strong: var(--grid-strong);
+  --color-rule: var(--rule);
+  --color-margin: var(--margin);
+  --color-ink: var(--ink);
+  --color-pencil: var(--pencil);
+  --color-crayon-blue: var(--crayon-blue);
+  --color-crayon-green: var(--crayon-green);
+  --color-crayon-yellow: var(--crayon-yellow);
+  --color-crayon-pink: var(--crayon-pink);
+  --color-tape: var(--tape);
+  --color-note-yellow: var(--note-yellow);
+  --color-note-green: var(--note-green);
+  --color-note-blue: var(--note-blue);
+  --color-note-pink: var(--note-pink);
+  --color-sheet: var(--sheet);
+
+  /* Phase 1 aliases (see :root) — nav/** and hero/** only. */
   --color-bg: var(--bg);
   --color-surface: var(--surface);
-  --color-ink: var(--ink);
   --color-muted: var(--muted);
   --color-line: var(--line);
   --color-accent: var(--accent);
   --color-accent-soft: var(--accent-soft);
   --color-sky: var(--sky);
   --color-sand: var(--sand);
+  --font-display: var(--font-mali);
+
   --font-sans: var(--font-body);
-  --font-display: var(--font-heading);
+  --font-hand: var(--font-mali);
+
+  /* Paper shadows: soft, ink-tinted (prototype A). */
+  --shadow-sheet: 0 8px 22px color-mix(in srgb, var(--ink) 12%, transparent);
+  --shadow-note: 0 6px 14px color-mix(in srgb, var(--ink) 14%, transparent);
+  --shadow-polaroid:
+    0 10px 24px color-mix(in srgb, var(--ink) 16%, transparent), 0 2px 4px color-mix(in srgb, var(--ink) 10%, transparent);
+  --shadow-tape: 0 1px 2px color-mix(in srgb, var(--ink) 6%, transparent);
+}
+
+/*
+ * Lined notebook page: blue rules every 32px and the red margin line at --margin-x. With the
+ * Sheet's 32px top padding and 32px line-height, the 22px offset puts each rule just under a
+ * line's baseline, so the copy sits on the rules.
+ */
+@utility lined-paper {
+  background-color: var(--sheet);
+  background-image:
+    linear-gradient(
+      90deg,
+      transparent var(--margin-x),
+      var(--margin) var(--margin-x),
+      var(--margin) calc(var(--margin-x) + 2px),
+      transparent calc(var(--margin-x) + 2px)
+    ),
+    linear-gradient(transparent 31px, var(--rule) 31px);
+  /* The rules are their own 32px tile, so the offset holds at any sheet height. */
+  background-size:
+    auto,
+    100% 32px;
+  background-position:
+    0 0,
+    0 22px;
+}
+
+/* Paper tilt from --tilt (deg): halved on phones, full from 640px up. */
+@utility tilt {
+  rotate: calc(var(--tilt, 0deg) * 0.5);
+  @media (width >= 40rem) {
+    rotate: var(--tilt, 0deg);
+  }
 }
 
 html {
   scroll-behavior: smooth;
 }
 
+/* The page is grid paper: 20px minor squares, 100px major squares. */
 body {
-  background: var(--bg);
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-strong) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:
+    100px 100px,
+    100px 100px,
+    20px 20px,
+    20px 20px;
   color: var(--ink);
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--accent-soft);
+  background: var(--note-yellow);
 }
 
 @media (prefers-reduced-motion: reduce) {

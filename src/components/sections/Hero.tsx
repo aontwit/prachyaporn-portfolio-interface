@@ -25,7 +25,7 @@ function Arrow({ down = false }: { down?: boolean }) {
 }
 
 const CTA =
-  "group inline-flex items-center gap-1.5 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+  "group inline-flex items-center gap-1.5 rounded-full focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-crayon-blue";
 // Pill and round companion share one 48px height; leading 1.6 keeps Thai within DESIGN.md.
 const PILL =
   "flex h-12 items-center rounded-full px-6 leading-[1.6] transition-colors duration-300 motion-reduce:transition-none";
@@ -44,7 +44,7 @@ export async function Hero() {
           <HeroIntro className="min-w-0">
             <HeroIntroItem>
               <p
-                className={`max-w-sm border-t border-line pt-3 text-muted ${
+                className={`max-w-sm border-t border-rule pt-3 text-pencil ${
                   thai ? "text-sm leading-[1.6]" : "text-xs tracking-[0.12em] uppercase"
                 }`}
               >
@@ -54,7 +54,7 @@ export async function Hero() {
             <HeroIntroItem>
               <h1
                 id="hero-name"
-                className={`font-display mt-5 text-[clamp(3.1rem,1.5rem+5vw,5.9rem)] font-semibold text-ink ${
+                className={`font-hand mt-5 text-[clamp(3.1rem,1.5rem+5vw,5.9rem)] font-semibold text-ink ${
                   thai ? "leading-[1.3]" : "leading-[1.02] tracking-[-0.015em]"
                 }`}
               >
@@ -71,19 +71,19 @@ export async function Hero() {
               </h1>
             </HeroIntroItem>
             <HeroIntroItem>
-              <p className="mt-5 text-xl leading-[1.6] text-accent sm:text-2xl">{t("profile.role")}</p>
+              <p className="mt-5 text-xl leading-[1.6] text-crayon-blue sm:text-2xl">{t("profile.role")}</p>
             </HeroIntroItem>
             <HeroIntroItem>
-              <p className="mt-6 max-w-136 text-lg leading-[1.7] text-muted">
+              <p className="mt-6 max-w-136 text-lg leading-[1.7] text-pencil">
                 {t.rich("hero.tagline", { drawn: (word) => <HandUnderline>{word}</HandUnderline> })}
               </p>
             </HeroIntroItem>
             <HeroIntroItem className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-4">
               <Link href="/activities" className={CTA}>
-                <span className={`${PILL} bg-accent text-surface group-hover:bg-ink`}>{t("hero.cta")}</span>
+                <span className={`${PILL} bg-crayon-blue text-sheet group-hover:bg-ink`}>{t("hero.cta")}</span>
                 <span
                   aria-hidden="true"
-                  className={`${ROUND} bg-accent text-surface group-hover:translate-x-0.5 group-hover:bg-ink`}
+                  className={`${ROUND} bg-crayon-blue text-sheet group-hover:translate-x-0.5 group-hover:bg-ink`}
                 >
                   <Arrow />
                 </span>
@@ -114,16 +114,16 @@ export async function Hero() {
               height={470}
               priority
               sizes="(min-width: 640px) 384px, 304px"
-              className="relative h-auto w-full rounded-[28px] object-cover ring-1 ring-line"
+              className="relative h-auto w-full rounded-[28px] object-cover ring-1 ring-rule"
             />
           </div>
         </div>
 
         <a
           href="#about"
-          className="mt-14 hidden items-center gap-3 self-start text-xs leading-[1.6] text-muted transition-colors hover:text-ink motion-reduce:transition-none lg:flex"
+          className="mt-14 hidden items-center gap-3 self-start text-xs leading-[1.6] text-pencil transition-colors hover:text-ink motion-reduce:transition-none lg:flex"
         >
-          <span aria-hidden="true" className="h-px w-10 bg-line" />
+          <span aria-hidden="true" className="h-px w-10 bg-rule" />
           <span className={thai ? "" : "tracking-[0.12em] uppercase"}>{t("hero.scroll")}</span>
         </a>
       </div>
