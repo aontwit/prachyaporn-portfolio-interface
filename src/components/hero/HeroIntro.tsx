@@ -35,7 +35,8 @@ export function HeroIntroItem({ children, className }: { children: ReactNode; cl
   const { paused } = useMotionPause();
   return (
     <motion.div
-      className={className}
+      // Without JS the hidden inline state would never animate away: show the copy as is.
+      className={`noscript:transform-none! noscript:opacity-100! ${className ?? ""}`}
       variants={{
         hidden: { opacity: 0, y: 18 },
         shown: { opacity: 1, y: 0, transition: paused ? INSTANT : { duration: 0.8, ease: HERO_EASE } },

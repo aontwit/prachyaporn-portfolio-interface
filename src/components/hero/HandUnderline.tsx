@@ -23,6 +23,7 @@ export function HandUnderline({ children }: { children: ReactNode }) {
           stroke="currentColor"
           strokeWidth={1.5}
           strokeLinecap="round"
+          className="noscript:[stroke-dasharray:none]"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
           transition={paused ? { duration: 0 } : { duration: 0.9, delay: 0.9, ease: HERO_EASE }}

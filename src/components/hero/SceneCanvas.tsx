@@ -102,7 +102,8 @@ export default function SceneCanvas({
   onReady,
 }: {
   frameloop: SceneFrameloop;
-  onReady: () => void;
+  /** true once the renderer exists; false when the WebGL context is lost (the CSS shapes return). */
+  onReady: (ready: boolean) => void;
 }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   // Exposed for checks: "demand" = no render loop (paused or off screen).
@@ -118,7 +119,13 @@ export default function SceneCanvas({
       flat
       camera={{ position: [0, 0, 6], fov: 35 }}
       gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
-      onCreated={onReady}
+      // Nothing in the scene is interactive; R3F's wrapper would otherwise take pointer events.
+      style={{ pointerEvents: "none" }}
+      onCreated={({ gl }) => {
+        gl.domElement.addEventListener("webglcontextlost", () => onReady(false));
+        gl.domElement.addEventListener("webglcontextrestored", () => onReady(true));
+        onReady(true);
+      }}
     >
       <ambientLight intensity={2} />
       <directionalLight position={[-3, 4, 5]} intensity={1.2} />
