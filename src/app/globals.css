@@ -26,6 +26,8 @@
   /*
    * Phase 1 names, kept only for src/components/nav/** and src/components/hero/**, which
    * P2-07 and P2-02 rebuild. Each points at the nearest notebook token; delete with those rows.
+   * Never use them in new code. paper/PenCircle gets its stroke colour through nav/HandDrawn's
+   * `text-accent`: HandDrawn moves to `text-crayon-blue` in the same change that deletes these.
    */
   --bg: var(--paper);
   --surface: var(--sheet);
@@ -99,7 +101,11 @@
       var(--margin) calc(var(--margin-x) + 2px),
       transparent calc(var(--margin-x) + 2px)
     ),
-    repeating-linear-gradient(transparent 0 31px, var(--rule) 31px 32px);
+    linear-gradient(transparent 31px, var(--rule) 31px);
+  /* The rules are their own 32px tile, so the offset holds at any sheet height. */
+  background-size:
+    auto,
+    100% 32px;
   background-position:
     0 0,
     0 22px;

@@ -10,7 +10,14 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  * scrolls into view. Decorative: the list it marks carries the meaning. `initial` is the same on
  * the server and the client; reduced motion and the pause pill only snap the transition.
  */
-export function Tick({ className = "" }: { className?: string }) {
+export function Tick({
+  delay = 0,
+  className = "",
+}: {
+  /** Seconds before it draws — stagger a list so one tick draws at a time. */
+  delay?: number;
+  className?: string;
+}) {
   const reduce = useReducedMotion();
   const { paused } = useMotionPause();
   return (
@@ -30,7 +37,7 @@ export function Tick({ className = "" }: { className?: string }) {
         initial={{ pathLength: 0 }}
         whileInView={{ pathLength: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: reduce || paused ? 0 : 0.5, ease: EASE }}
+        transition={reduce || paused ? { duration: 0 } : { duration: 0.8, delay, ease: EASE }}
       />
     </svg>
   );
