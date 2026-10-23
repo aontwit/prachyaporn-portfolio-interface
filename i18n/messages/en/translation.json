@@ -91,6 +91,15 @@
       "9420814": "Teachers and pupils in a group photo outside the fair hall"
     },
     "back": "Back to home",
+    "label": "Teaching journal",
+    "photoCount": "{count, plural, one {# photo} other {# photos}}",
+    "lightbox": {
+      "label": "Photos from {title}",
+      "close": "Close",
+      "previous": "Previous photo",
+      "next": "Next photo",
+      "counter": "Photo {current} of {total}"
+    },
     "items": {
       "student-arts-crafts-fair-73": {
         "title": "73rd Student Arts & Crafts Fair",
