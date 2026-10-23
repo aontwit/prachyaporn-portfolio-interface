@@ -87,9 +87,10 @@ export function Lightbox({
     if (!(e.target as Element).closest("figure, button")) close();
   }
 
-  // Round paper buttons: white sheet, ink icon, a sticky note's shadow.
+  // Round paper buttons: white sheet, ink icon, a sticky note's shadow. Two-tone focus ring (ink
+  // ring + white outline) so it shows on the dark backdrop and over the white polaroid frame.
   const iconButton =
-    "grid size-11 shrink-0 place-items-center rounded-full bg-sheet text-ink shadow-note transition-colors hover:bg-note-yellow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sheet motion-reduce:transition-none";
+    "grid size-11 shrink-0 place-items-center rounded-full bg-sheet text-ink shadow-note transition-colors hover:bg-note-yellow focus-visible:ring-2 focus-visible:ring-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sheet motion-reduce:transition-none";
 
   return (
     <dialog
@@ -126,11 +127,11 @@ export function Lightbox({
               <Polaroid
                 rotate={-1}
                 caption={
-                  <span aria-hidden="true" className="block max-w-2xl text-sm">
+                  <span aria-hidden="true" className="mx-auto block max-w-2xl text-sm">
                     {photo.alt}
                   </span>
                 }
-                className="w-[min(100%,calc((100dvh-16rem)*var(--ratio)+1.75rem))]"
+                className="w-[min(100%,max(8rem,calc((100dvh-16rem)*var(--ratio)+1.75rem)))]"
               >
                 <Image
                   key={photo.id}

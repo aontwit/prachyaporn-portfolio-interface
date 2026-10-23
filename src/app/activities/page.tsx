@@ -31,7 +31,9 @@ export default async function ActivitiesPage() {
   const t = await getTranslations("activities");
   const format = await getFormatter();
   return (
-    <div className="mx-auto max-w-5xl px-4 pt-10 pb-24 sm:px-6 sm:pt-14">
+    // overflow-x-clip: a polaroid still tipped in its drop-in start state may poke past a 360px
+    // screen; clip (not hidden) keeps the sticky column working and the gutter's tilted corners visible.
+    <div className="mx-auto max-w-5xl overflow-x-clip px-4 pt-10 pb-24 sm:px-6 sm:pt-14">
       <Link
         href="/"
         className="inline-flex min-h-11 items-center gap-2 font-hand text-pencil transition-colors hover:text-ink-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-blue motion-reduce:transition-none"
@@ -78,7 +80,7 @@ export default async function ActivitiesPage() {
                 </h2>
                 <Sheet tilt={i % 2 === 0 ? -0.6 : 0.6} className="mt-6">
                   <p className="text-pencil">{t(`items.${activity.slug}.summary`)}</p>
-                  <p className="mt-8 font-hand text-sm text-pencil">{t("photoCount", { count: photos.length })}</p>
+                  <p className="mt-8 font-hand text-sm leading-8 text-pencil">{t("photoCount", { count: photos.length })}</p>
                 </Sheet>
               </div>
             </div>
