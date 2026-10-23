@@ -11,6 +11,8 @@ export type Activity = {
   slug: keyof typeof messages.activities.items;
   /** ISO date when known; titles and dates come from banners in the photos. */
   date?: string;
+  /** Photo for the home card (cropped to 4:3); defaults to the first photo. */
+  cover?: PhotoId;
   photos: Photo[];
 };
 
@@ -26,10 +28,12 @@ export const activities: Activity[] = [
   {
     slug: "student-arts-crafts-fair-73",
     date: "2026-02-12",
+    cover: "9420814",
     photos: [img("9420813", 900, 1600), img("9420814", 1477, 1108)],
   },
   {
     slug: "lent-candle-offering",
+    cover: "9420809",
     photos: [
       img("9420810", 1280, 598),
       img("9420811", 1280, 598),
