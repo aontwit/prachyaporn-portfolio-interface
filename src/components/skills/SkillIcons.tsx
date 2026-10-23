@@ -41,12 +41,12 @@ export function AbacusIcon() {
     <Doodle>
       <path d="M4.3 4.4c5.2-.3 10.3-.2 15.5.1.2 5 .3 10-.1 15-5.1.3-10.3.3-15.4 0-.3-5-.3-10 0-15.1Z" />
       <path d="M4.5 9.2c5-.2 10-.1 15.1 0M4.5 14.9c5-.1 10 0 15.1-.1" />
-      <ellipse cx="7.9" cy="9.2" rx="1.1" ry="1.5" />
-      <ellipse cx="10.6" cy="9.2" rx="1.1" ry="1.5" />
-      <ellipse cx="16.1" cy="9.2" rx="1.1" ry="1.5" />
+      <ellipse cx="7.6" cy="9.2" rx="1.1" ry="1.5" />
+      <ellipse cx="11.1" cy="9.2" rx="1.1" ry="1.5" />
+      <ellipse cx="16.4" cy="9.2" rx="1.1" ry="1.5" />
       <ellipse cx="7.6" cy="14.9" rx="1.1" ry="1.5" />
-      <ellipse cx="13.4" cy="14.9" rx="1.1" ry="1.5" />
-      <ellipse cx="16.1" cy="14.9" rx="1.1" ry="1.5" />
+      <ellipse cx="12.9" cy="14.9" rx="1.1" ry="1.5" />
+      <ellipse cx="16.4" cy="14.9" rx="1.1" ry="1.5" />
     </Doodle>
   );
 }

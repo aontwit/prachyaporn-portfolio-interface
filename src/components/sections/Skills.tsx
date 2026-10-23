@@ -19,12 +19,13 @@ export async function Skills() {
   const t = await getTranslations();
   return (
     <Section id="skills" title={t("nav.skills")}>
-      <ul className="grid gap-5 sm:grid-cols-2">
+      <ul role="list" className="grid gap-5 sm:grid-cols-2">
         {profile.skills.map((id, i) => {
           const { Icon, edge } = skillLook[id];
           return (
             <li key={id}>
-              <Reveal delay={i * 0.08} className="h-full">
+              {/* Stagger within a row only, so a phone reader never waits on cards above. */}
+              <Reveal delay={(i % 2) * 0.08} className="h-full">
                 {/* Focusable so keyboard readers get the same lift as a hover. */}
                 <article
                   tabIndex={0}
@@ -34,10 +35,10 @@ export async function Skills() {
                   <span className="inline-flex size-11 items-center justify-center rounded-full bg-accent-soft text-accent">
                     <Icon />
                   </span>
-                  <h3 id={`skill-${id}`} className="font-display mt-5 text-xl leading-snug text-ink">
+                  <h3 id={`skill-${id}`} className="font-display mt-5 text-xl leading-[1.6] text-ink">
                     {t(`skills.${id}.title`)}
                   </h3>
-                  <p className="mt-2 leading-[1.75] text-muted">{t(`skills.${id}.body`)}</p>
+                  <p className="mt-2 text-[17px] leading-[1.75] text-muted">{t(`skills.${id}.body`)}</p>
                 </article>
               </Reveal>
             </li>
