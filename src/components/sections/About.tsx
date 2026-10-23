@@ -1,41 +1,63 @@
-import { getLocale, getTranslations } from "next-intl/server";
+import Image from "next/image";
+import { getTranslations } from "next-intl/server";
+import { PenCircle, Sheet } from "@/components/paper";
 import { Section } from "@/components/Section";
+import { doodle } from "@/content/doodles";
 
 /**
- * Splits the summary into its opening line and the rest, from the text alone (no per-language copy):
- * up to the first ". " when there is one (English), else up to the first space (Thai separates clauses with spaces).
- * A lead that is not a sensible pull-quote length → no lead, the whole summary as body text.
+ * Splits the text around the first `phrase` so the pen can circle it; phrase missing → no circle.
+ * Punctuation that touches the phrase ("(" before, ")" "." "," after) travels with it, so a line
+ * never breaks between them.
  */
-function splitLead(text: string): [lead: string, rest: string] {
-  const stop = text.indexOf(". ");
-  const at = stop >= 0 ? stop + 1 : text.indexOf(" ");
-  return at >= 20 && at <= 160 ? [text.slice(0, at), text.slice(at).trim()] : ["", text];
+function splitAround(text: string, phrase: string) {
+  const at = phrase ? text.indexOf(phrase) : -1;
+  if (at < 0) return { before: text, open: "", phrase: "", close: "", after: "" };
+  const head = text.slice(0, at);
+  const tail = text.slice(at + phrase.length);
+  const open = head.match(/[(“"]$/)?.[0] ?? "";
+  const close = tail.match(/^[)”".,]+/)?.[0] ?? "";
+  return {
+    before: head.slice(0, head.length - open.length),
+    open,
+    phrase,
+    close,
+    after: tail.slice(close.length),
+  };
 }
 
-// Static on purpose: a calm page of text. (The shared `Reveal` mismatches on hydration under reduced motion.)
+const BEAR = doodle("bear-pencil");
+
+// A taped notebook page: the summary written on the 32px rules, one key phrase circled by the pen.
 export async function About() {
   const t = await getTranslations();
-  const thai = (await getLocale()) === "th";
-  const [lead, rest] = splitLead(t("profile.summary"));
+  const { before, open, phrase, close, after } = splitAround(t("profile.summary"), t("about.keyPhrase"));
   return (
     <Section id="about" title={t("nav.about")}>
-      <p className="mb-12 border-t border-rule pt-3 text-xs leading-[1.6] tracking-[0.12em] text-pencil uppercase">
-        {t("about.label")}
-      </p>
-      <div className="grid gap-12 md:grid-cols-[1fr_12rem] md:gap-16">
-        <div>
-          {lead && (
-            <p className={`font-hand mb-8 text-2xl text-ink sm:text-4xl ${thai ? "leading-[1.6]" : "leading-[1.3]"}`}>
-              {lead}
-            </p>
+      <Sheet tilt={-0.6} tape="one">
+        <Image
+          src={BEAR.src}
+          alt=""
+          width={BEAR.width}
+          height={BEAR.height}
+          sizes="(min-width: 640px) 96px, 64px"
+          className="pointer-events-none absolute -top-12 right-3 h-auto w-16 rotate-6 drop-shadow-sm select-none sm:-top-16 sm:right-8 sm:w-24"
+        />
+        <p className="font-hand leading-8 text-pencil">{t("about.label")}</p>
+        <p className="max-w-3xl text-base leading-8 text-ink sm:text-lg">
+          {before}
+          {phrase && (
+            <span className="mx-1.5 whitespace-nowrap">
+              {open}
+              <PenCircle>{phrase}</PenCircle>
+              {close}
+            </span>
           )}
-          {rest && <p className="max-w-xl text-lg leading-[1.8] text-pencil">{rest}</p>}
-        </div>
-        <aside className="border-t border-rule pt-3">
-          <p className="text-xs leading-[1.6] tracking-[0.12em] text-pencil uppercase">{t("about.basedIn")}</p>
-          <p className="font-hand mt-2 text-lg leading-[1.6] text-ink">{t("profile.location")}</p>
-        </aside>
-      </div>
+          {after}
+        </p>
+        <p className="mt-8 font-hand text-sm leading-8 text-pencil">
+          {t("about.basedIn")} <span className="text-base text-ink-blue">{t("profile.location")}</span>
+        </p>
+      </Sheet>
     </Section>
   );
 }

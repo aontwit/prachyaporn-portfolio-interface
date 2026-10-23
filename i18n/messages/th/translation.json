@@ -35,7 +35,8 @@
   },
   "about": {
     "label": "รู้จักครูโดยย่อ",
-    "basedIn": "ประจำอยู่ที่"
+    "basedIn": "ประจำอยู่ที่",
+    "keyPhrase": "Active Learning"
   },
   "hero": {
     "greeting": "สวัสดีค่ะ",
