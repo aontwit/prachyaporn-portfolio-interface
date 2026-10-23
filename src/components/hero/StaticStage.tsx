@@ -53,8 +53,10 @@ export function StaticStage() {
                   "--x-compact": pct(c.x.compact ?? 0),
                   bottom: pct(base),
                   height: pct(total),
-                  aspectRatio: `${a.width} / ${a.height / drawing}`,
-                  rotate: `${c.lean}deg`,
+                  // Rounded like every other value here, so server and browser maths print the same string.
+                  aspectRatio: `${a.width} / ${(a.height / drawing).toFixed(2)}`,
+                  // CSS turns clockwise, three.js counter-clockwise: negate so both lean the same way.
+                  rotate: `${-c.lean}deg`,
                   transformOrigin: "50% 100%",
                 } as CSSProperties
               }

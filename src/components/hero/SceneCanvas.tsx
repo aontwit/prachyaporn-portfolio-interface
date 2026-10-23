@@ -85,14 +85,17 @@ function shadowTexture() {
   const c = document.createElement("canvas");
   c.width = c.height = px;
   const g = c.getContext("2d")!;
-  const ink = new Color(token("ink"));
+  // sRGB channels of the ink token, for a texture tagged sRGB below.
+  const ink = new Color(token("ink")).getRGB({ r: 0, g: 0, b: 0 }, SRGBColorSpace);
   const rgb = `${Math.round(ink.r * 255)}, ${Math.round(ink.g * 255)}, ${Math.round(ink.b * 255)}`;
   const gradient = g.createRadialGradient(px / 2, px / 2, 0, px / 2, px / 2, px / 2);
   gradient.addColorStop(0, `rgba(${rgb}, 0.45)`);
   gradient.addColorStop(1, `rgba(${rgb}, 0)`);
   g.fillStyle = gradient;
   g.fillRect(0, 0, px, px);
-  return new CanvasTexture(c);
+  const t = new CanvasTexture(c);
+  t.colorSpace = SRGBColorSpace;
+  return t;
 }
 
 /** A strip of grid paper lying on the page, with a faint shadow along its front edge. */
@@ -178,11 +181,13 @@ function Stand({
 
 /** Pointer parallax on desktop: the camera drifts a little, the depth does the rest. */
 function Parallax({ pointer }: { pointer: { current: Pointer } }) {
-  useFrame(({ camera }) => {
+  useFrame(({ camera }, delta) => {
     const tx = pointer.current.x * 0.35;
     const ty = CAMERA.y + pointer.current.y * 0.08;
-    camera.position.x += (tx - camera.position.x) * 0.06;
-    camera.position.y += (ty - camera.position.y) * 0.06;
+    // Same easing speed at any refresh rate.
+    const k = 1 - Math.exp(-Math.min(delta, 0.1) * 4);
+    camera.position.x += (tx - camera.position.x) * k;
+    camera.position.y += (ty - camera.position.y) * k;
   });
   return null;
 }
@@ -265,9 +270,13 @@ export default function SceneCanvas({
       gl={{ alpha: true, antialias: true, powerPreference: "low-power" }}
       // Nothing in the scene is interactive; R3F's wrapper would otherwise take pointer events.
       style={{ pointerEvents: "none" }}
-      onCreated={({ gl }) => {
+      onCreated={({ gl, invalidate }) => {
         gl.domElement.addEventListener("webglcontextlost", () => onReady(false));
-        gl.domElement.addEventListener("webglcontextrestored", () => onReady(true));
+        gl.domElement.addEventListener("webglcontextrestored", () => {
+          // A paused loop would otherwise leave the restored canvas blank.
+          invalidate();
+          onReady(true);
+        });
       }}
     >
       <ambientLight color={warm} intensity={2.6} />

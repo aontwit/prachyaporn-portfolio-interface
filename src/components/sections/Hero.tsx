@@ -20,7 +20,7 @@ function Arrow({ down = false }: { down?: boolean }) {
       strokeLinecap="round"
       strokeLinejoin="round"
       className={`size-4 shrink-0 transition-transform duration-300 motion-reduce:transition-none ${
-        down ? "rotate-90 group-hover:translate-x-0.5" : "group-hover:translate-x-0.5"
+        down ? "rotate-90 group-hover:translate-y-0.5" : "group-hover:translate-x-0.5"
       }`}
     >
       <path d="M3 8.4c3.2-.5 6.6-.6 9.6-.3M9.2 4.6c1.3 1.2 2.6 2.3 3.6 3.5-1.1 1.1-2.3 2.3-3.4 3.6" />
@@ -99,7 +99,14 @@ export async function Hero() {
         </HeroIntro>
 
         <div className="mx-auto w-full max-w-64 sm:max-w-72">
-          <Polaroid rotate={2.5} caption={t("hero.caption")}>
+          <Polaroid
+            rotate={2.5}
+            caption={
+              <>
+                {t("hero.caption")} <span aria-hidden="true">♡</span>
+              </>
+            }
+          >
             <Image
               src={profile.portrait}
               alt={t("profile.name")}

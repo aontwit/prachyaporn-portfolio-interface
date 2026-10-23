@@ -16,7 +16,10 @@ export const COMPACT_MAX_PX = 576;
 /** The strip of grid-paper ground: from its front edge back to its far edge (world z). */
 export const GROUND = { near: 2, far: -4 } as const;
 
-/** Content width the cast spreads over (px, max-w-6xl); the ground itself runs the full width. */
+/**
+ * Width the cast spreads over (px, max-w-6xl) — on purpose a little wider than the copy column
+ * (max-w-5xl) so the cut-outs frame it; the ground itself runs the full width.
+ */
 export const CAST_MAX_PX = 1152;
 
 export type CutOut = {
@@ -29,7 +32,7 @@ export type CutOut = {
   size: number;
   /** Bare stick between the ground and the drawing, world units. */
   stick: number;
-  /** Resting lean, degrees (the sway adds at most ±3° around it). */
+  /** Resting lean, degrees, positive = counter-clockwise (the sway adds at most ±3° around it). */
   lean: number;
   /** Offsets the sway so no two cut-outs move in step. */
   phase: number;
