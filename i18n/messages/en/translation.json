@@ -26,6 +26,10 @@
     "location": "Chiang Rai, Thailand",
     "summary": "An early childhood teacher with a degree in the field, specialising in child developmental psychology and hands-on Active Learning. Skilled at classroom management and at communicating with young children warmly and patiently while holding their attention. Grounded in mental-arithmetic and finger-counting methods, and eager to train in an institute's abacus programme. Also tutors mathematics, Thai and English at preschool and primary level."
   },
+  "about": {
+    "label": "In brief",
+    "basedIn": "Based in"
+  },
   "hero": {
     "greeting": "Hello, I'm",
     "tagline": "A teacher who believes every child learns best by doing.",
@@ -33,6 +37,7 @@
     "contactCta": "Get in touch"
   },
   "education": {
+    "label": "Learning path",
     "padaet": {
       "school": "Padaet Wittayakhom School",
       "detail": "Upper secondary · Science–Mathematics programme"
