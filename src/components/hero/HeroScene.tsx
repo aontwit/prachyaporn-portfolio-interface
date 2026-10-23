@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { Component, useEffect, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
+import { StaticStage } from "@/components/hero/StaticStage";
 import { useMotionPause } from "@/components/MotionPause";
 
 // three + react-three-fiber stay out of the server render and the first client bundle.
@@ -26,7 +27,7 @@ function detectWebGL() {
 
 const subscribeNever = () => () => {};
 
-/** A renderer or chunk that fails after the probe drops the canvas; the CSS shapes stay. */
+/** A renderer, texture or chunk that fails after the probe drops the canvas; the static stage stays. */
 class SceneBoundary extends Component<{ children: ReactNode; onError: () => void }, { failed: boolean }> {
   state = { failed: false };
   static getDerivedStateFromError() {
@@ -41,9 +42,10 @@ class SceneBoundary extends Component<{ children: ReactNode; onError: () => void
 }
 
 /**
- * Soft floating shapes behind the portrait. The CSS shapes are the server render, the
- * no-WebGL fallback, and what shows until the canvas is ready; the canvas mounts the first
- * time its box is on screen and only loops while motion is not paused and the box is on screen.
+ * The paper cut-out stage of the hero (DESIGN.md "3D hero"). The static stage is the server
+ * render, the no-WebGL fallback and what shows until the canvas has drawn; the canvas mounts the
+ * first time the stage is on screen and only loops while motion is not paused and it is on screen.
+ * Fills its (relative, sized) parent.
  */
 export function HeroScene() {
   const { paused } = useMotionPause();
@@ -67,16 +69,14 @@ export function HeroScene() {
   const frameloop = paused || !onScreen ? "demand" : "always";
 
   return (
-    <div ref={box} aria-hidden="true" className="pointer-events-none absolute inset-0">
+    <div ref={box} aria-hidden="true" className="pointer-events-none absolute inset-0 @container">
       <div
+        data-stage="static"
         className={`absolute inset-0 transition-opacity duration-700 motion-reduce:transition-none ${
           ready ? "opacity-0" : "opacity-100"
         }`}
       >
-        <span className="absolute top-[3%] right-[2%] size-[34%] rotate-12 rounded-[46%_54%_52%_48%/58%_44%_56%_42%] bg-[radial-gradient(circle_at_32%_28%,var(--surface),var(--sky)_72%)]" />
-        <span className="absolute bottom-[6%] left-[1%] h-[30%] w-[22%] -rotate-28 rounded-[50%_50%_50%_50%/62%_62%_38%_38%] bg-[radial-gradient(circle_at_40%_30%,var(--surface),var(--accent-soft)_70%)]" />
-        <span className="absolute right-[6%] bottom-[2%] size-[26%] rounded-[55%_45%_50%_50%/50%_55%_45%_50%] bg-[radial-gradient(circle_at_35%_30%,var(--surface),var(--sand)_75%)]" />
-        <span className="absolute top-[14%] left-[3%] size-[16%] rounded-[50%_50%_46%_54%/56%_48%_52%_44%] bg-[radial-gradient(circle_at_35%_30%,var(--surface),var(--sky)_80%)]" />
+        <StaticStage />
       </div>
       {webgl && seen && (
         <div
