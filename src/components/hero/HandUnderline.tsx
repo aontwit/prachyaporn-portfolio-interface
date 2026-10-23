@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 import { HERO_EASE } from "@/components/hero/HeroIntro";
 import { useMotionPause } from "@/components/MotionPause";
 
-/** The one hand-drawn mark of the hero (DESIGN.md): an irregular accent stroke under a word. */
+/** The hero keyword's crayon underline (DESIGN.md "Teacher's pen"): a wavy crayon-pink stroke drawn on once. */
 export function HandUnderline({ children }: { children: ReactNode }) {
   const { paused } = useMotionPause();
   return (
@@ -13,20 +13,21 @@ export function HandUnderline({ children }: { children: ReactNode }) {
       {children}
       <svg
         aria-hidden="true"
-        viewBox="0 0 100 12"
+        focusable="false"
+        viewBox="0 0 100 14"
         preserveAspectRatio="none"
         fill="none"
-        className="pointer-events-none absolute -bottom-2 left-[-2%] h-3 w-[104%] overflow-visible text-accent"
+        className="pointer-events-none absolute -bottom-2.5 left-[-4%] h-3.5 w-[108%] overflow-visible text-crayon-pink"
       >
         <motion.path
-          d="M2 7.6C16 5.2 31 4.1 47 4.9c14 .7 27 2.6 38 2.4 5-.1 9-.8 13-1.9"
+          d="M2 9C20 3 35 12 52 7s30-3 46 1"
           stroke="currentColor"
-          strokeWidth={1.5}
+          strokeWidth={3}
           strokeLinecap="round"
           className="noscript:[stroke-dasharray:none]"
           initial={{ pathLength: 0 }}
           animate={{ pathLength: 1 }}
-          transition={paused ? { duration: 0 } : { duration: 0.9, delay: 0.9, ease: HERO_EASE }}
+          transition={paused ? { duration: 0 } : { duration: 0.8, delay: 0.9, ease: HERO_EASE }}
         />
       </svg>
     </span>
