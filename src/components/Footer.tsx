@@ -1,10 +1,10 @@
-import { profile } from "@/content/profile";
-import type { Locale } from "@/lib/i18n";
+import { getTranslations } from "next-intl/server";
 
-export function Footer({ lang }: { lang: Locale }) {
+export async function Footer() {
+  const t = await getTranslations("profile");
   return (
     <footer className="border-t border-line py-10 text-center text-sm text-muted">
-      © {new Date().getFullYear()} {profile.name[lang]}
+      © {new Date().getFullYear()} {t("name")}
     </footer>
   );
 }

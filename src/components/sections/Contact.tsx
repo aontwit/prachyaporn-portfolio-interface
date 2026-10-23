@@ -1,17 +1,17 @@
+import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/Section";
 import { profile } from "@/content/profile";
-import { ui } from "@/content/ui";
-import type { Locale } from "@/lib/i18n";
 
-export function Contact({ lang }: { lang: Locale }) {
+export async function Contact() {
+  const t = await getTranslations("contact");
   return (
-    <Section id="contact" title={ui.contact.title[lang]}>
-      <p className="text-muted">{ui.contact.intro[lang]}</p>
+    <Section id="contact" title={t("title")}>
+      <p className="text-muted">{t("intro")}</p>
       <p className="mt-4">
-        {ui.contact.email[lang]}: <a href={`mailto:${profile.email}`}>{profile.email}</a>
+        {t("email")}: <a href={`mailto:${profile.email}`}>{profile.email}</a>
       </p>
       <p>
-        {ui.contact.phone[lang]}: <a href={profile.phoneHref}>{profile.phone}</a>
+        {t("phone")}: <a href={profile.phoneHref}>{profile.phone}</a>
       </p>
     </Section>
   );

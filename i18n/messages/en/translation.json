@@ -1,0 +1,115 @@
+{
+  "meta": {
+    "description": "Prachyaporn Saensla, early childhood teacher in Chiang Rai — child development, hands-on Active Learning and mental arithmetic."
+  },
+  "language": {
+    "label": "Language",
+    "th": "ไทย",
+    "en": "EN"
+  },
+  "skipToContent": "Skip to content",
+  "motion": {
+    "pause": "Pause motion",
+    "play": "Play motion"
+  },
+  "nav": {
+    "about": "About",
+    "education": "Education",
+    "experience": "Experience",
+    "skills": "Skills",
+    "activities": "Activities",
+    "contact": "Contact"
+  },
+  "profile": {
+    "name": "Prachyaporn Saensla",
+    "role": "Early Childhood Teacher",
+    "location": "Chiang Rai, Thailand",
+    "summary": "An early childhood teacher with a degree in the field, specialising in child developmental psychology and hands-on Active Learning. Skilled at classroom management and at communicating with young children warmly and patiently while holding their attention. Grounded in mental-arithmetic and finger-counting methods, and eager to train in an institute's abacus programme. Also tutors mathematics, Thai and English at preschool and primary level."
+  },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "tagline": "A teacher who believes every child learns best by doing.",
+    "cta": "See activities",
+    "contactCta": "Get in touch"
+  },
+  "education": {
+    "padaet": {
+      "school": "Padaet Wittayakhom School",
+      "detail": "Upper secondary · Science–Mathematics programme"
+    },
+    "stou": {
+      "school": "Sukhothai Thammathirat Open University",
+      "detail": "Bachelor's degree · Early Childhood Development"
+    },
+    "crru": {
+      "school": "Chiang Rai Rajabhat University",
+      "detail": "Graduate Diploma in Teaching Profession"
+    }
+  },
+  "experience": {
+    "current": {
+      "years": "2025 – Present",
+      "title": "Early Childhood Teacher",
+      "org": "Ban Wiang Doem School",
+      "points": {
+        "p1": "Care closely for kindergarten pupils — daily routines, hygiene and safety.",
+        "p2": "Design lesson plans, run learning activities and make my own teaching materials.",
+        "p3": "Build behaviour assessment plans and observe each child's development, grounded in developmental psychology.",
+        "p4": "Co-organise enrichment projects such as the STEM project \"Fun with Natural Colours\"."
+      }
+    }
+  },
+  "skills": {
+    "earlyYears": {
+      "title": "Early Years & Child Psychology",
+      "body": "Whole-child development, communication that fits how young children think, and a classroom where focus feels like fun."
+    },
+    "mentalMath": {
+      "title": "Mental Arithmetic",
+      "body": "Mental-arithmetic and finger-counting methods that train focus, memory and systematic thinking."
+    },
+    "tutoring": {
+      "title": "Academic Tutoring",
+      "body": "Primary tutoring (grades 1–6) in mathematics and Thai, with conversational English."
+    },
+    "parents": {
+      "title": "Parent Communication",
+      "body": "Warm, regular updates on each child's progress for parents, and teaching materials made by hand."
+    }
+  },
+  "activities": {
+    "title": "Activities",
+    "intro": "Moments with my pupils and school.",
+    "seeAll": "See all activities",
+    "photos": {
+      "9420808": "Pupils and teachers in front of the temple's assembly hall",
+      "9420809": "Teachers with a monk inside the ordination hall",
+      "9420810": "Pupils with palms joined, listening to the monks in the temple hall",
+      "9420811": "Teachers with the monks and the offerings",
+      "9420812": "Teachers with palms joined in front of the ceremony banner",
+      "9420813": "Teacher Prachyaporn with three pupils in front of the fair stage",
+      "9420814": "Teachers and pupils in a group photo outside the fair hall"
+    },
+    "back": "Back to home",
+    "items": {
+      "student-arts-crafts-fair-73": {
+        "title": "73rd Student Arts & Crafts Fair",
+        "summary": "Wiang Chai–Wiang Nuea school cluster, hosted at Ban Wiang Doem School. I brought pupils to compete and perform."
+      },
+      "lent-candle-offering": {
+        "title": "Buddhist Lent Candle Offering",
+        "summary": "Ban Wiang Doem School offered Lent candles and pupils declared themselves Buddhists — values taught from an early age."
+      },
+      "temple-visit": {
+        "title": "Temple Culture Visit",
+        "summary": "Preschool and primary pupils learning Thai art, culture and tradition on site."
+      }
+    }
+  },
+  "contact": {
+    "title": "Get in touch",
+    "intro": "Happy to talk about teaching, tutoring and new opportunities.",
+    "email": "Email",
+    "phone": "Phone"
+  }
+}

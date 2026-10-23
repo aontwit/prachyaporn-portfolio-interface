@@ -1,24 +1,22 @@
+import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/Section";
 import { profile } from "@/content/profile";
-import { ui } from "@/content/ui";
-import type { Locale } from "@/lib/i18n";
 
-export function Experience({ lang }: { lang: Locale }) {
+export async function Experience() {
+  const t = await getTranslations();
   return (
-    <Section id="experience" title={ui.nav.experience[lang]}>
-      {profile.experience.map((x) => (
-        <article key={x.title.en}>
-          <p className="text-sm text-accent">{x.years[lang]}</p>
-          <h3 className="font-medium">
-            {x.title[lang]} · {x.org[lang]}
-          </h3>
-          <ul className="mt-3 list-disc space-y-2 pl-5 text-muted">
-            {x.points.map((p) => (
-              <li key={p.en}>{p[lang]}</li>
-            ))}
-          </ul>
-        </article>
-      ))}
+    <Section id="experience" title={t("nav.experience")}>
+      <article>
+        <p className="text-sm text-accent">{t("experience.current.years")}</p>
+        <h3 className="font-medium">
+          {t("experience.current.title")} · {t("experience.current.org")}
+        </h3>
+        <ul className="mt-3 list-disc space-y-2 pl-5 text-muted">
+          {profile.experiencePoints.map((id) => (
+            <li key={id}>{t(`experience.current.points.${id}`)}</li>
+          ))}
+        </ul>
+      </article>
     </Section>
   );
 }

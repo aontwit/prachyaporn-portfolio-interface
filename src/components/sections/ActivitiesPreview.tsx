@@ -1,19 +1,19 @@
 import Link from "next/link";
+import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/Section";
 import { activities } from "@/content/activities";
-import { ui } from "@/content/ui";
-import type { Locale } from "@/lib/i18n";
 
-export function ActivitiesPreview({ lang }: { lang: Locale }) {
+export async function ActivitiesPreview() {
+  const t = await getTranslations("activities");
   return (
-    <Section id="activities" title={ui.activities.title[lang]}>
+    <Section id="activities" title={t("title")}>
       <ul className="space-y-2">
         {activities.map((a) => (
-          <li key={a.slug}>{a.title[lang]}</li>
+          <li key={a.slug}>{t(`items.${a.slug}.title`)}</li>
         ))}
       </ul>
-      <Link href={`/${lang}/activities/`} className="mt-6 inline-block text-accent">
-        {ui.activities.seeAll[lang]} →
+      <Link href="/activities" className="mt-6 inline-block text-accent">
+        {t("seeAll")} →
       </Link>
     </Section>
   );

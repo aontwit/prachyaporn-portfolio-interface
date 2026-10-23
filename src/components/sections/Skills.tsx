@@ -1,16 +1,16 @@
+import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/Section";
 import { profile } from "@/content/profile";
-import { ui } from "@/content/ui";
-import type { Locale } from "@/lib/i18n";
 
-export function Skills({ lang }: { lang: Locale }) {
+export async function Skills() {
+  const t = await getTranslations();
   return (
-    <Section id="skills" title={ui.nav.skills[lang]}>
+    <Section id="skills" title={t("nav.skills")}>
       <div className="grid gap-6 sm:grid-cols-2">
-        {profile.skills.map((s) => (
-          <div key={s.title.en}>
-            <h3 className="font-medium">{s.title[lang]}</h3>
-            <p className="mt-2 text-muted">{s.body[lang]}</p>
+        {profile.skills.map((id) => (
+          <div key={id}>
+            <h3 className="font-medium">{t(`skills.${id}.title`)}</h3>
+            <p className="mt-2 text-muted">{t(`skills.${id}.body`)}</p>
           </div>
         ))}
       </div>

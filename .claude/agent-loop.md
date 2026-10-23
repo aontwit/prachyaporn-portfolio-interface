@@ -6,7 +6,7 @@ Repo values that pitwall (`/pitwall`, `/pitwall:gauge`, `/pitwall:ticket`) reads
 
 | | |
 |---|---|
-| name | prachyaporn-portfolio-interface (bilingual th/en portfolio site for an early childhood teacher — Next.js 16 static export) |
+| name | prachyaporn-portfolio-interface (bilingual th/en portfolio site for an early childhood teacher — Next.js 16, next-intl cookie locale) |
 | loop state | one folder per repo, outside the checkout: Windows `%LOCALAPPDATA%\Agent-Loop\prachyaporn-portfolio-interface\state.json` · macOS `~/Library/Application Support/Agent-Loop/prachyaporn-portfolio-interface/state.json` · Linux `~/.local/state/agent-loop/prachyaporn-portfolio-interface/state.json` |
 | loop checkout | `C:\personal\prachyaporn-portfolio-interface` — nobody works in it while the loop runs |
 
@@ -39,7 +39,7 @@ pnpm install --frozen-lockfile   # when the lockfile changes or dependencies are
 pnpm run typecheck
 pnpm run lint                    # 0 errors, warnings ≤ lintBaseline (0)
 # test: none — no test runner yet
-pnpm run build                   # static export to out/
+pnpm run build
 ```
 
 PR-body check: `node <pitwall dir>/scripts/check-pr-body.mjs --file <body file>` (default)
@@ -50,7 +50,7 @@ PR-body check: `node <pitwall dir>/scripts/check-pr-body.mjs --file <body file>`
 |---|---|
 | dev server | `pnpm run dev -p <port>` on port `3000` · `port: free` (static site, no backend: each worktree runs its own server on a spare port) · port already in use by someone else → never kill it, item B becomes ⏳ case 3 |
 | browser | Playwright MCP (`mcp__playwright__*`) |
-| pages | `/th/`, `/en/`, `/th/activities/`, `/en/activities/` |
+| pages | `/`, `/activities` — each in Thai and English (click `ไทย` / `EN` in the header, or set cookie `NEXT_LOCALE=th|en`) |
 | viewports | 360 and 1366 px · console errors = 0 · no horizontal scroll at 360 |
 | time | ~10 minutes per method per item, then change method |
 | human-only steps | none |
@@ -65,9 +65,9 @@ none — static content from `src/content/`; reduced motion is checked with Play
 
 | Changed files | Evidence | Level |
 |---|---|---|
-| `src/components/**`, `src/app/**` | screenshot of the changed section at 360 and 1366 px on `/th/` and `/en/`, plus one with reduced motion | B |
-| `src/content/**` | both `th` and `en` present for every new value (typecheck enforces `Localized`) and rendered on the page | A + B |
-| `src/app/**/opengraph-image.*`, `sitemap.ts`, `robots.ts` | the generated file exists in `out/` after `pnpm run build` | A |
+| `src/components/**`, `src/app/**` | screenshot of the changed section at 360 and 1366 px in Thai and English, plus one with reduced motion | B |
+| `i18n/messages/**`, `src/content/**` | every new key in both `th` and `en` (typecheck enforces it) and rendered on the page | A + B |
+| `src/app/**/opengraph-image.*`, `sitemap.ts`, `robots.ts`, `icon.*` | the route responds 200 on the dev server | B |
 
 ## plan
 

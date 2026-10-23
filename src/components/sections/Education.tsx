@@ -1,17 +1,17 @@
+import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/Section";
 import { profile } from "@/content/profile";
-import { ui } from "@/content/ui";
-import type { Locale } from "@/lib/i18n";
 
-export function Education({ lang }: { lang: Locale }) {
+export async function Education() {
+  const t = await getTranslations();
   return (
-    <Section id="education" title={ui.nav.education[lang]}>
+    <Section id="education" title={t("nav.education")}>
       <ol className="space-y-6">
         {profile.education.map((e) => (
-          <li key={e.years}>
+          <li key={e.id}>
             <p className="text-sm text-accent">{e.years}</p>
-            <p className="font-medium">{e.school[lang]}</p>
-            <p className="text-muted">{e.detail[lang]}</p>
+            <p className="font-medium">{t(`education.${e.id}.school`)}</p>
+            <p className="text-muted">{t(`education.${e.id}.detail`)}</p>
           </li>
         ))}
       </ol>

@@ -1,12 +1,11 @@
+import { getTranslations } from "next-intl/server";
 import { Section } from "@/components/Section";
-import { profile } from "@/content/profile";
-import { ui } from "@/content/ui";
-import type { Locale } from "@/lib/i18n";
 
-export function About({ lang }: { lang: Locale }) {
+export async function About() {
+  const t = await getTranslations();
   return (
-    <Section id="about" title={ui.nav.about[lang]}>
-      <p className="max-w-3xl text-lg leading-relaxed text-muted">{profile.summary[lang]}</p>
+    <Section id="about" title={t("nav.about")}>
+      <p className="max-w-3xl text-lg leading-relaxed text-muted">{t("profile.summary")}</p>
     </Section>
   );
 }
