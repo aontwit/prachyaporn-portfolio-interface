@@ -25,7 +25,7 @@ const heading = Noto_Serif_Thai({
 const OG_LOCALE: Record<Locale, string> = { th: "th_TH", en: "en_US" };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const locale = (await getLocale()) as Locale;
+  const locale = await getLocale();
   const t = await getTranslations();
   return {
     metadataBase: new URL(SITE_URL),

@@ -28,22 +28,24 @@ const TOKENS = {
 /** A TTF subset with just `text` from Google Fonts (a plain fetch gets TTF, which Satori needs). */
 async function googleFont(family: string, weight: number, text: string): Promise<ArrayBuffer> {
   const query = `family=${family.replaceAll(" ", "+")}:wght@${weight}&text=${encodeURIComponent(text)}`;
-  const css = await (await fetch(`https://fonts.googleapis.com/css2?${query}`)).text();
+  const signal = AbortSignal.timeout(15_000);
+  const css = await (await fetch(`https://fonts.googleapis.com/css2?${query}`, { signal })).text();
   const url = css.match(/src: url\((.+?)\) format\('(?:opentype|truetype)'\)/)?.[1];
   if (!url) throw new Error(`opengraph-image: no TTF for ${family} ${weight} from Google Fonts`);
-  const font = await fetch(url);
+  const font = await fetch(url, { signal });
   if (!font.ok) throw new Error(`opengraph-image: ${family} ${weight} returned ${font.status}`);
   return font.arrayBuffer();
 }
 
-// Nothing here depends on the request, so it is read once (at build time for the static image).
-const [serif, sans, portrait] = await Promise.all([
-  googleFont("Noto Serif Thai", 600, name + latinName),
-  googleFont("IBM Plex Sans Thai", 400, role + location),
-  readFile(join(process.cwd(), "public/images/portrait.jpg"), "base64"),
-]);
-
-export default function OpengraphImage() {
+// Assets load inside the handler, not at module scope: every page imports this module for
+// `alt` / `size`, and a module-level fetch would run (and could fail) on each page render.
+// The route itself is static, so this runs once at build time.
+export default async function OpengraphImage() {
+  const [serif, sans, portrait] = await Promise.all([
+    googleFont("Noto Serif Thai", 600, name + latinName),
+    googleFont("IBM Plex Sans Thai", 400, role + location),
+    readFile(join(process.cwd(), "public/images/portrait.jpg"), "base64"),
+  ]);
   return new ImageResponse(
     (
       <div
