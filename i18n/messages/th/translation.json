@@ -18,7 +18,14 @@
     "experience": "ประสบการณ์",
     "skills": "ทักษะ",
     "activities": "กิจกรรม",
-    "contact": "ติดต่อ"
+    "contact": "ติดต่อ",
+    "label": "เมนูหลัก",
+    "menu": "เมนู",
+    "close": "ปิด"
+  },
+  "footer": {
+    "nav": "ลิงก์ท้ายหน้า",
+    "backToTop": "กลับขึ้นด้านบน"
   },
   "profile": {
     "name": "ปรัชญาภรณ์ แสนสล่า",
