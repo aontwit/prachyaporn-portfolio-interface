@@ -38,7 +38,7 @@ One family of hand-drawn SVG strokes, drawn on with Motion `pathLength` 0 → 1 
 
 ## Colour tokens (`src/app/globals.css` is the only place hex lives)
 
-`paper` #fbfaf5 · `grid` #cfe0ec · `grid-strong` #b7cfe0 · `rule` #c9dbe8 · `margin` #e8a0a0 · `ink` #2b3a42 · `pencil` #5d6b72 · `crayon-blue` #5b8fc9 · `crayon-green` #7fb08a · `crayon-yellow` #f2c94c · `crayon-pink` #ef9aa8 · `tape` rgba(242,201,76,.55) · `note-yellow` #fff6c9 · `note-green` #e3f1e6 · `note-blue` #e4eef8 · `note-pink` #fde4e8 · `sheet` #ffffff
+`paper` #fbfaf5 · `grid` #cfe0ec · `grid-strong` #b7cfe0 · `rule` #c9dbe8 · `margin` #e8a0a0 · `ink` #2b3a42 · `pencil` #5d6b72 · `crayon-blue` #5b8fc9 (strokes, marks, fills only) · `ink-blue` #2f5f93 (blue **text** and filled buttons — 6.3:1 on paper; crayon-blue is only 3.2:1, owner decision 2026-10-24) · `crayon-green` #7fb08a · `crayon-yellow` #f2c94c · `crayon-pink` #ef9aa8 · `tape` rgba(242,201,76,.55) · `note-yellow` #fff6c9 · `note-green` #e3f1e6 · `note-blue` #e4eef8 · `note-pink` #fde4e8 · `sheet` #ffffff
 
 ## Illustrations
 

@@ -10,6 +10,8 @@
   --ink: #2b3a42;
   --pencil: #5d6b72;
   --crayon-blue: #5b8fc9;
+  /* text-safe blue: 6.3:1 on paper (crayon-blue is 3.2:1, strokes and marks only) */
+  --ink-blue: #2f5f93;
   --crayon-green: #7fb08a;
   --crayon-yellow: #f2c94c;
   --crayon-pink: #ef9aa8;
@@ -54,6 +56,7 @@
   --color-ink: var(--ink);
   --color-pencil: var(--pencil);
   --color-crayon-blue: var(--crayon-blue);
+  --color-ink-blue: var(--ink-blue);
   --color-crayon-green: var(--crayon-green);
   --color-crayon-yellow: var(--crayon-yellow);
   --color-crayon-pink: var(--crayon-pink);
