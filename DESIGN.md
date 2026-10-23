@@ -1,6 +1,6 @@
 # Design direction — "The teacher's notebook" (phase 2)
 
-The whole site is a teacher's notebook: a **grid-paper page** with **lined notebook sheets taped onto it**, crayon drawings cut out and stuck on, sticky notes, a polaroid of the teacher, and a teacher's pen that circles, underlines and ticks. It must read instantly as *early childhood teaching* — warm, playful, a little messy by hand — while staying calm and easy to read in Thai.
+The whole site is a teacher's notebook: a **grid-paper page** with **lined notebook sheets taped onto it**, crayon drawings cut out and stuck on, sticky notes, a cut-out sticker of the teacher, and a teacher's pen that circles, underlines and ticks. It must read instantly as *early childhood teaching* — warm, playful, a little messy by hand — while staying calm and easy to read in Thai.
 
 Chosen by the owner on 2026-10-24 (prototype "A": grid page + lined sheets). Phase 1's "teacher's journal" (GoShuin) look is replaced; its **hand-drawn ellipse around the active nav item stays** — the owner loves it.
 
@@ -16,7 +16,8 @@ Chosen by the owner on 2026-10-24 (prototype "A": grid page + lined sheets). Pha
 - **Page** (`body`): grid paper — `paper` background, 20px minor grid in `grid`, 100px major grid in `grid-strong`. Always visible behind everything.
 - **Sheet**: a lined notebook page laid on the grid — white, blue rules every 32px (`rule`), a red margin line (`margin`) ~52px from the left, soft shadow, 1–2 strips of `tape` at the top, very slight rotation (≤ 1°). Body text sits **on** the rules (line-height 32px for sheet copy).
 - **Sticky note**: square-ish note in one of the note colours (`note-yellow`, `note-green`, `note-blue`, `note-pink`), rotated −2…+2°, small shadow. For skills and short facts.
-- **Polaroid**: white frame, photo, handwritten caption, a strip of tape. For the portrait and activity photos.
+- **Polaroid**: white frame, photo, handwritten caption, a strip of tape. For activity photos.
+- **Portrait sticker**: the teacher's photo with the studio background removed, cut out with a white paper border like the crayon doodles, taped, with a handwritten caption (owner decision 2026-10-24: no blue studio background).
 - **Tape**: translucent yellow strip (`tape`), slightly rotated, sits over the edge it "holds".
 - Mobile: same paper; rotations halved; sheets full width; margin line moves to ~36px.
 
@@ -56,4 +57,4 @@ One family of hand-drawn SVG strokes, drawn on with Motion `pathLength` 0 → 1 
 
 ## 3D hero
 
-React-three-fiber scene in the hero: a strip of grid-paper ground, 4–6 crayon cut-outs on sticks (mascot bear, sun, flower, books, paper plane…) as textured planes with a white border and soft shadow, warm light, slow sway, slight parallax with the pointer on desktop. Portrait polaroid and the handwritten name stay in HTML beside it (SEO, readability). Lazy, client-only, DPR ≤ 1.5, static fallback (the same cut-outs as positioned `<img>`s) without WebGL.
+React-three-fiber scene in the hero: a strip of grid-paper ground, 4–6 crayon cut-outs on sticks (mascot bear, sun, flower, books, paper plane…) as textured planes with a white border and soft shadow, warm light, slow sway, slight parallax with the pointer on desktop. The portrait sticker and the handwritten name stay in HTML beside it (SEO, readability). Lazy, client-only, DPR ≤ 1.5, static fallback (the same cut-outs as positioned `<img>`s) without WebGL.
