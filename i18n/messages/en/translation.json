@@ -18,7 +18,14 @@
     "experience": "Experience",
     "skills": "Skills",
     "activities": "Activities",
-    "contact": "Contact"
+    "contact": "Contact",
+    "label": "Main menu",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "footer": {
+    "nav": "Footer links",
+    "backToTop": "Back to top"
   },
   "profile": {
     "name": "Prachyaporn Saensla",
@@ -26,13 +33,21 @@
     "location": "Chiang Rai, Thailand",
     "summary": "An early childhood teacher with a degree in the field, specialising in child developmental psychology and hands-on Active Learning. Skilled at classroom management and at communicating with young children warmly and patiently while holding their attention. Grounded in mental-arithmetic and finger-counting methods, and eager to train in an institute's abacus programme. Also tutors mathematics, Thai and English at preschool and primary level."
   },
+  "about": {
+    "label": "In brief",
+    "basedIn": "Based in",
+    "keyPhrase": "Active Learning"
+  },
   "hero": {
     "greeting": "Hello, I'm",
-    "tagline": "A teacher who believes every child learns best by doing.",
+    "tagline": "A teacher who believes every child learns best by <drawn>doing</drawn>.",
     "cta": "See activities",
-    "contactCta": "Get in touch"
+    "contactCta": "Get in touch",
+    "scroll": "Scroll to explore",
+    "caption": "Teacher Prachyaporn"
   },
   "education": {
+    "label": "Learning path",
     "padaet": {
       "school": "Padaet Wittayakhom School",
       "detail": "Upper secondary · Science–Mathematics programme"
@@ -49,6 +64,7 @@
   "experience": {
     "current": {
       "years": "2025 – Present",
+      "stamp": "Present",
       "title": "Early Childhood Teacher",
       "org": "Ban Wiang Doem School",
       "points": {
@@ -91,6 +107,15 @@
       "9420814": "Teachers and pupils in a group photo outside the fair hall"
     },
     "back": "Back to home",
+    "label": "Teaching journal",
+    "photoCount": "{count, plural, one {# photo} other {# photos}}",
+    "lightbox": {
+      "label": "Photos from {title}",
+      "close": "Close",
+      "previous": "Previous photo",
+      "next": "Next photo",
+      "counter": "Photo {current} of {total}"
+    },
     "items": {
       "student-arts-crafts-fair-73": {
         "title": "73rd Student Arts & Crafts Fair",
@@ -108,6 +133,7 @@
   },
   "contact": {
     "title": "Get in touch",
+    "greeting": "Hello!",
     "intro": "Happy to talk about teaching, tutoring and new opportunities.",
     "email": "Email",
     "phone": "Phone"

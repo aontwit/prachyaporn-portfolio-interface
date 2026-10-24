@@ -13,14 +13,17 @@ export function Reveal({
   delay?: number;
   className?: string;
 }) {
+  // useReducedMotion() is null on the server and true/false on the client, so it
+  // must never change `initial` (that is SSR markup → hydration mismatch). Only the
+  // transition depends on it: reduced motion snaps to the final state.
   const reduce = useReducedMotion();
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-10% 0px" }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={reduce ? { duration: 0 } : { duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>

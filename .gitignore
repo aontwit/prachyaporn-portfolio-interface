@@ -46,3 +46,6 @@ next-env.d.ts
 
 # local browser tool output
 /.playwright-mcp/
+
+# python bytecode (scripts/doodles)
+__pycache__/
