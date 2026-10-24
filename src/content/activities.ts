@@ -23,13 +23,29 @@ const img = (id: PhotoId, width: number, height: number): Photo => ({
   height,
 });
 
-// Newest first.
+// Newest first: dated activities by date, then the undated ones.
 export const activities: Activity[] = [
   {
     slug: "student-arts-crafts-fair-73",
     date: "2026-02-12",
     cover: "9420814",
     photos: [img("9420813", 900, 1600), img("9420814", 1477, 1108)],
+  },
+  {
+    slug: "academic-camp-early-years",
+    date: "2026-01-26",
+    photos: [
+      img("261024-24", 1600, 900),
+      img("261024-23", 1600, 900),
+      img("261024-25", 1600, 900),
+      img("261024-26", 1600, 900),
+      img("261024-27", 1280, 598),
+    ],
+  },
+  {
+    slug: "muay-thai-for-health",
+    date: "2025-05-31",
+    photos: [img("261024-39", 1280, 853), img("261024-41", 1280, 853)],
   },
   {
     slug: "lent-candle-offering",
@@ -44,5 +60,37 @@ export const activities: Activity[] = [
   {
     slug: "temple-visit",
     photos: [img("9420808", 1477, 1108)],
+  },
+  {
+    slug: "childrens-day",
+    photos: [img("261024-20", 1280, 721)],
+  },
+  {
+    slug: "wai-kru",
+    photos: [img("261024-37", 1477, 1108)],
+  },
+  {
+    slug: "field-trip",
+    photos: [img("261024-12", 1280, 853), img("261024-14", 1280, 853)],
+  },
+  {
+    slug: "asean-day",
+    photos: [
+      img("261024-44", 1567, 1044),
+      img("261024-43", 1567, 1044),
+      img("261024-45", 1567, 1044),
+      img("261024-46", 1567, 1044),
+      img("261024-47", 1567, 1044),
+      img("261024-8", 1567, 1044),
+    ],
+  },
+  {
+    slug: "krathong-making",
+    cover: "261024-9",
+    photos: [img("261024-10", 1477, 1108), img("261024-11", 1477, 1108), img("261024-9", 1477, 1108)],
+  },
+  {
+    slug: "kindergarten-graduation",
+    photos: [img("261024-7", 1477, 1108)],
   },
 ];
