@@ -72,7 +72,7 @@ export function MediaWorksheet({ title, photos }: { title: string; photos: Works
               </button>
               {/* A different, shorter text than the alt, so it is read too. */}
               <figcaption className="font-hand leading-8 text-pretty text-ink">
-                <span className="mr-1.5 text-ink-blue tabular-nums">{i + 1}.</span>
+                <span aria-hidden="true" className="mr-1.5 text-ink-blue tabular-nums">{i + 1}.</span>
                 {photo.caption}
               </figcaption>
             </figure>
