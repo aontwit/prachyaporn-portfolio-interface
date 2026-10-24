@@ -1,9 +1,13 @@
 /**
  * The site's public origin — the one place metadata, sitemap and robots read it from.
- * Placeholder until hosting is decided (PLAN.md open question 1): set `NEXT_PUBLIC_SITE_URL`
- * on the host (e.g. `https://example.com`, no trailing slash) to override it.
+ * `NEXT_PUBLIC_SITE_URL` (e.g. a custom domain, no trailing slash) wins; on Vercel it falls back to
+ * the project's production domain, which Vercel sets on every build, previews included.
  */
-export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || "https://prachyaporn.vercel.app").replace(/\/+$/, "");
+export const SITE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL && `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`) ||
+  "http://localhost:3000"
+).replace(/\/+$/, "");
 
 /** Paths a crawler should know about; language is a cookie, so one URL serves both. */
 export const SITE_PATHS = ["/", "/activities"] as const;
