@@ -61,6 +61,43 @@
       "detail": "Graduate Diploma in Teaching Profession"
     }
   },
+  "certificates": {
+    "title": "Training & certificates",
+    "label": "Open a certificate to read it full size",
+    "lightbox": "Certificates, full size",
+    "items": {
+      "cubScoutLeader": {
+        "course": "Cub Scout Leader Training, Basic Course",
+        "issuer": "National Scout Organization of Thailand, Ministry of Education",
+        "alt": "Certificate for completing Cub Scout Leader Training, Basic Course, from the National Scout Organization of Thailand, {year}"
+      },
+      "scoutLeader": {
+        "course": "Scout Leader Training, General Course",
+        "issuer": "National Scout Organization of Thailand, Ministry of Education",
+        "alt": "Certificate for completing Scout Leader Training, General Course, from the National Scout Organization of Thailand, {year}"
+      },
+      "storyScenes": {
+        "course": "Creating storybook scene media for early childhood learning experiences (online)",
+        "issuer": "RADA Training and Development",
+        "alt": "Certificate for the online course on creating storybook scene media for early childhood learning, from RADA Training and Development, {year}"
+      },
+      "earlyYearsCurriculum": {
+        "course": "Adapting the school curriculum to the 2017 or 2025 Early Childhood Education Curriculum (online)",
+        "issuer": "Local Education Network",
+        "alt": "Certificate for the online course on adapting the school curriculum to the Early Childhood Education Curriculum, from the Local Education Network, {year}"
+      },
+      "aiWorkshop": {
+        "course": "Workshop: improving education quality with artificial intelligence (AI), 2025 academic year",
+        "issuer": "Wiang Chai–Wiang Nuea School Group with the Chiang Rai Primary Educational Service Area Office 1",
+        "alt": "Certificate for taking part in a workshop on improving education quality with artificial intelligence (AI), from the Wiang Chai–Wiang Nuea School Group and the Chiang Rai Primary Educational Service Area Office 1, {year}"
+      },
+      "disabilityScreening": {
+        "course": "Screening learners with disabilities for education support",
+        "issuer": "Central Special Education Center",
+        "alt": "Certificate for completing the course for staff who screen learners with disabilities, from the Central Special Education Center, {year}"
+      }
+    }
+  },
   "experience": {
     "current": {
       "years": "2025 – Present",
