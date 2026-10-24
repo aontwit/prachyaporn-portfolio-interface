@@ -93,6 +93,38 @@
       "body": "Warm, regular updates on each child's progress for parents, and teaching materials made by hand."
     }
   },
+  "teachingMedia": {
+    "title": "Teaching media I make",
+    "label": "Behind the scenes of my classroom media",
+    "intro": "I cut, laminate and put together the classroom media myself <circle>piece by piece</circle> so the children can hold it, look at the pictures and learn by doing.",
+    "lightboxTitle": "making teaching media",
+    "photos": {
+      "prep-pieces": {
+        "caption": "Getting the cut-out soil pieces ready",
+        "alt": "The teacher sits on the floor peeling a yellow backing sheet, with cut-out soil-pattern paper pieces and rolls of tape beside her"
+      },
+      "five-senses-board": {
+        "caption": "Laying out a five senses board",
+        "alt": "The teacher in a pink shirt lays out a five senses board with a drawing of a child, pastel picture strips and word cards"
+      },
+      "soil-cards": {
+        "caption": "Soil cards, laminated and done",
+        "alt": "Glossy laminated soil-pattern cards piled on the floor, next to cut-out vegetable pictures, rolls of tape and scissors"
+      },
+      "cutting-frames": {
+        "caption": "Cutting out frames, with the cat for company",
+        "alt": "The teacher in an orange shirt cuts out a printed cartoon frame with scissors while an orange cat lies beside her"
+      },
+      "school-board": {
+        "caption": "Sticking pictures on a board about school",
+        "alt": "The teacher in a pink shirt puts together a yellow board with a school building, a Thai flag, round pictures and word cards"
+      },
+      "water-board": {
+        "caption": "Placing pictures on a water cycle board",
+        "alt": "The teacher places cut-out pictures of the sun, clouds and raindrops on a blue water cycle board"
+      }
+    }
+  },
   "activities": {
     "title": "Activities",
     "intro": "Moments with my pupils and school.",
