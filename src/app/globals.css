@@ -129,4 +129,9 @@ body {
   html {
     scroll-behavior: auto;
   }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none;
+  }
 }

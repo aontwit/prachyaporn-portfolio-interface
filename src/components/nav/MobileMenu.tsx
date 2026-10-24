@@ -22,6 +22,8 @@ export function MobileMenu({ name }: { name: string }) {
   // Forget it once the page changed (browser Back included), so Forward never reopens it.
   if (openOn !== null && openOn !== pathname) setOpenOn(null);
   const open = openOn === pathname;
+  // Remounts the links on every open, so the ellipse draws again; they stay mounted while the sheet fades out.
+  const [opens, setOpens] = useState(0);
   const sheetId = useId();
   const button = useRef<HTMLButtonElement>(null);
   const sheet = useRef<HTMLDivElement>(null);
@@ -78,7 +80,10 @@ export function MobileMenu({ name }: { name: string }) {
         type="button"
         aria-expanded={open}
         aria-controls={sheetId}
-        onClick={() => setOpenOn(pathname)}
+        onClick={() => {
+          setOpenOn(pathname);
+          setOpens((n) => n + 1);
+        }}
         className="-mr-2 inline-flex min-h-11 min-w-11 items-center gap-2 rounded-full px-3 font-hand text-sm text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink-blue"
       >
         <svg aria-hidden="true" focusable="false" viewBox="0 0 20 20" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
@@ -93,8 +98,13 @@ export function MobileMenu({ name }: { name: string }) {
         role="dialog"
         aria-modal="true"
         aria-label={t("label")}
-        hidden={!open}
-        className="lined-paper fixed inset-0 z-50 flex flex-col overflow-y-auto bg-local"
+        // A page turning down from the header. `invisible` (not `hidden`) waits for the fade-out and still
+        // takes the closed sheet out of focus order; it flips at once on open, so focus can move in.
+        className={`lined-paper fixed inset-0 z-50 flex flex-col overflow-y-auto bg-local duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
+          open
+            ? "visible translate-y-0 opacity-100 transition-[opacity,translate]"
+            : "invisible -translate-y-3 opacity-0 transition-[opacity,translate,visibility]"
+        }`}
       >
         <div className="flex h-16 shrink-0 items-center justify-between gap-4 border-b border-rule bg-sheet px-4">
           <span className="font-hand text-lg">{name}</span>
@@ -110,7 +120,7 @@ export function MobileMenu({ name }: { name: string }) {
           </button>
         </div>
         <nav aria-label={t("label")} className="pr-5 pl-[calc(var(--margin-x)+0.75rem)]">
-          {open && <NavList variant="sheet" onNavigate={() => close(false)} />}
+          <NavList key={opens} variant="sheet" onNavigate={() => close(false)} />
         </nav>
         <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-rule bg-sheet px-4 pt-4 pb-8">
           <LanguageSwitch />

@@ -63,7 +63,15 @@ export function HeroScene() {
       if (entry.isIntersecting) setSeen(true);
     });
     io.observe(el);
-    return () => io.disconnect();
+    // On phones the stage starts below the fold: load three.js while the page is idle, not as the
+    // reader scrolls onto it (that mount is a 70–190ms long task mid-scroll).
+    const idle = window.requestIdleCallback ?? ((fn: () => void) => window.setTimeout(fn, 1500));
+    const cancel = window.cancelIdleCallback ?? window.clearTimeout;
+    const id = idle(() => setSeen(true), { timeout: 4000 });
+    return () => {
+      io.disconnect();
+      cancel(id);
+    };
   }, []);
 
   const frameloop = paused || !onScreen ? "demand" : "always";
