@@ -99,9 +99,8 @@
   }
 }
 
-html {
-  scroll-behavior: smooth;
-}
+/* No `scroll-behavior: smooth`: SmoothScroll (Lenis) eases section links, and Next 16 would animate
+   the scroll of every page change with it (the new page slides up from the old offset). */
 
 /* The page is grid paper: 20px minor squares, 100px major squares. */
 body {
@@ -121,14 +120,18 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* No one-word last line under a heading ("ครั้ง / ที่ 73"). */
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
 ::selection {
   background: var(--note-yellow);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
   ::view-transition-group(*),
   ::view-transition-old(*),
   ::view-transition-new(*) {

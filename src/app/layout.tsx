@@ -6,6 +6,7 @@ import { ViewTransition } from "react";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { MotionPauseProvider } from "@/components/MotionPause";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import { SITE_URL } from "@/lib/site";
 import { LOCALES, type Locale } from "../../i18n/locales";
 import "./globals.css";
@@ -52,6 +53,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-dvh">
         <NextIntlClientProvider>
           <MotionPauseProvider>
+            <SmoothScroll />
             <Header />
             {/* overflow-x-clip: tilted paper may poke a pixel past the edge on phones; clip (not hidden) keeps sticky children working */}
             {/* ViewTransition: page changes and the language switch crossfade instead of swapping in one frame */}

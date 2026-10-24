@@ -98,6 +98,8 @@ export function MobileMenu({ name }: { name: string }) {
         role="dialog"
         aria-modal="true"
         aria-label={t("label")}
+        // the sheet scrolls itself; SmoothScroll leaves it alone
+        data-lenis-prevent
         // A page turning down from the header. `invisible` (not `hidden`) waits for the fade-out and still
         // takes the closed sheet out of focus order; it flips at once on open, so focus can move in.
         className={`lined-paper fixed inset-0 z-50 flex flex-col overflow-y-auto bg-local duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${
