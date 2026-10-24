@@ -1,5 +1,5 @@
 // Text (course, issuer, alt) lives in translation.json under `certificates.items.<id>`,
-// read from each certificate itself. Only the teacher's name is printed on them; nothing else personal.
+// read from each certificate itself. No registration or document number is copied into the text.
 import type messages from "../../i18n/messages/th/translation.json";
 
 export type CertificateId = keyof typeof messages.certificates.items;

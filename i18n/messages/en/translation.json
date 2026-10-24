@@ -63,7 +63,7 @@
   },
   "certificates": {
     "title": "Training & certificates",
-    "label": "Tap a certificate to read it full size",
+    "label": "Open a certificate to read it full size",
     "lightbox": "Certificates, full size",
     "items": {
       "cubScoutLeader": {
