@@ -49,3 +49,6 @@ next-env.d.ts
 
 # python bytecode (scripts/doodles)
 __pycache__/
+
+# client photo drops — raw, unblurred; never commit
+/new/

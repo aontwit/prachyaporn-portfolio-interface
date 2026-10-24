@@ -61,9 +61,46 @@
       "detail": "Graduate Diploma in Teaching Profession"
     }
   },
+  "certificates": {
+    "title": "Training & certificates",
+    "label": "Open a certificate to read it full size",
+    "lightbox": "Certificates, full size",
+    "items": {
+      "cubScoutLeader": {
+        "course": "Cub Scout Leader Training, Basic Course",
+        "issuer": "National Scout Organization of Thailand, Ministry of Education",
+        "alt": "Certificate for completing Cub Scout Leader Training, Basic Course, from the National Scout Organization of Thailand, {year}"
+      },
+      "scoutLeader": {
+        "course": "Scout Leader Training, General Course",
+        "issuer": "National Scout Organization of Thailand, Ministry of Education",
+        "alt": "Certificate for completing Scout Leader Training, General Course, from the National Scout Organization of Thailand, {year}"
+      },
+      "storyScenes": {
+        "course": "Creating storybook scene media for early childhood learning experiences (online)",
+        "issuer": "RADA Training and Development",
+        "alt": "Certificate for the online course on creating storybook scene media for early childhood learning, from RADA Training and Development, {year}"
+      },
+      "earlyYearsCurriculum": {
+        "course": "Adapting the school curriculum to the 2017 or 2025 Early Childhood Education Curriculum (online)",
+        "issuer": "Local Education Network",
+        "alt": "Certificate for the online course on adapting the school curriculum to the Early Childhood Education Curriculum, from the Local Education Network, {year}"
+      },
+      "aiWorkshop": {
+        "course": "Workshop: improving education quality with artificial intelligence (AI), 2025 academic year",
+        "issuer": "Wiang Chai–Wiang Nuea School Group with the Chiang Rai Primary Educational Service Area Office 1",
+        "alt": "Certificate for taking part in a workshop on improving education quality with artificial intelligence (AI), from the Wiang Chai–Wiang Nuea School Group and the Chiang Rai Primary Educational Service Area Office 1, {year}"
+      },
+      "disabilityScreening": {
+        "course": "Screening learners with disabilities for education support",
+        "issuer": "Central Special Education Center",
+        "alt": "Certificate for completing the course for staff who screen learners with disabilities, from the Central Special Education Center, {year}"
+      }
+    }
+  },
   "experience": {
     "current": {
-      "years": "2025 – Present",
+      "years": "{from} – Present",
       "stamp": "Present",
       "title": "Early Childhood Teacher",
       "org": "Ban Wiang Doem School",
@@ -93,6 +130,38 @@
       "body": "Warm, regular updates on each child's progress for parents, and teaching materials made by hand."
     }
   },
+  "teachingMedia": {
+    "title": "Teaching media I make",
+    "label": "Behind the scenes of my classroom media",
+    "intro": "I cut, laminate and put together the classroom media myself <circle>piece by piece</circle> so the children can hold it, look at the pictures and learn by doing.",
+    "lightboxTitle": "making teaching media",
+    "photos": {
+      "prep-pieces": {
+        "caption": "Getting the cut-out soil pieces ready",
+        "alt": "The teacher sits on the floor peeling a yellow backing sheet, with cut-out soil-pattern paper pieces and rolls of tape beside her"
+      },
+      "five-senses-board": {
+        "caption": "Laying out a five senses board",
+        "alt": "The teacher in a pink shirt lays out a five senses board with a drawing of a child, pastel picture strips and word cards"
+      },
+      "soil-cards": {
+        "caption": "Soil cards, laminated and done",
+        "alt": "Glossy laminated soil-pattern cards piled on the floor, next to cut-out vegetable pictures, rolls of tape and scissors"
+      },
+      "cutting-frames": {
+        "caption": "Cutting out frames, with the cat for company",
+        "alt": "The teacher in an orange shirt cuts out a printed cartoon frame with scissors while an orange cat lies beside her"
+      },
+      "school-board": {
+        "caption": "Sticking pictures on a board about school",
+        "alt": "The teacher in a pink shirt puts together a yellow board with a school building, a Thai flag, round pictures and word cards"
+      },
+      "water-board": {
+        "caption": "Placing pictures on a water cycle board",
+        "alt": "The teacher places cut-out pictures of the sun, clouds and raindrops on a blue water cycle board"
+      }
+    }
+  },
   "activities": {
     "title": "Activities",
     "intro": "Moments with my pupils and school.",
@@ -104,7 +173,28 @@
       "9420811": "Teachers with the monks and the offerings",
       "9420812": "Teachers with palms joined in front of the ceremony banner",
       "9420813": "Teacher Prachyaporn with three pupils in front of the fair stage",
-      "9420814": "Teachers and pupils in a group photo outside the fair hall"
+      "9420814": "Teachers and pupils in a group photo outside the fair hall",
+      "261024-24": "A teacher sets out bread, jam and a sandwich toaster at the “Little Chefs: Toast” station",
+      "261024-23": "A teacher demonstrates at the “Little Chefs: Toast” station while young pupils sit in a ring on the classroom floor",
+      "261024-25": "A pupil spreads a filling on bread at the table, next to a plate of toasted sandwiches",
+      "261024-26": "Pupils hold up the toast they made and give a thumbs up",
+      "261024-27": "Pupils gather round a table at an outdoor station below the early years academic camp banner",
+      "261024-39": "Participants line up in front of the stage below the Muay Thai project banner while pupils watch from the floor",
+      "261024-41": "Pupils practise Muay Thai moves together in the school hall",
+      "261024-20": "Teachers and guests in military-style costumes in a group photo on the National Children's Day stage, behind trophies and prizes",
+      "261024-37": "Teachers in civil-service uniform sit on stage with palms joined at the Wai Kru ceremony",
+      "261024-12": "Pupils and teachers in a group photo in front of a giant wooden owl sculpture",
+      "261024-14": "Pupils sit together in a car park while teachers stand nearby looking after them",
+      "261024-44": "Teachers in ASEAN national costumes stand on a stage hung with the member countries' flags",
+      "261024-43": "Teachers in a range of national costumes in a group photo on stage beneath the ASEAN and Thai flags",
+      "261024-45": "Teachers in national costumes in a group photo in front of the Wiang Doem old town sign at the school",
+      "261024-46": "Teachers in national costumes prepare food together at a classroom table",
+      "261024-47": "Teachers in plastic gloves mix ingredients in bowls, with pupils helping at the table",
+      "261024-8": "Teachers in national costumes ladle food into cups and prepare dishes at the table",
+      "261024-10": "Pupils and teachers sit on mats outside the classroom, folding banana leaves into krathongs",
+      "261024-11": "A teacher helps a pupil decorate a banana-leaf krathong with flowers",
+      "261024-9": "Pupils hold their finished krathongs with adults beside a pond",
+      "261024-7": "Three kindergarten pupils in graduation gowns with their teachers in front of the Ban Wiang Doem School sign"
     },
     "back": "Back to home",
     "label": "Teaching journal",
@@ -128,6 +218,38 @@
       "temple-visit": {
         "title": "Temple Culture Visit",
         "summary": "Preschool and primary pupils learning Thai art, culture and tradition on site."
+      },
+      "academic-camp-early-years": {
+        "title": "Early Years Academic Camp",
+        "summary": "Early years pupils learned at hands-on stations, such as “Little Chefs: Toast”, making and tasting their own toast."
+      },
+      "muay-thai-for-health": {
+        "title": "Muay Thai to Music for Health and Self-Defence",
+        "summary": "Pupils practised Muay Thai moves together in the school hall, for good health and as an art of self-defence."
+      },
+      "childrens-day": {
+        "title": "National Children's Day",
+        "summary": "The National Children's Day stage, decked with bunting and balloons: teachers and guests in military-style costumes, with trophies and prizes lined up in front."
+      },
+      "wai-kru": {
+        "title": "Wai Kru Ceremony",
+        "summary": "Ban Wiang Doem School's Wai Kru ceremony, the day pupils pay respect and give thanks to their teachers. The teachers sit on stage with palms joined."
+      },
+      "field-trip": {
+        "title": "Field Trip to Learning Sites",
+        "summary": "A Ban Wiang Doem School outing: pupils and teachers in a group photo in front of a giant wooden owl sculpture."
+      },
+      "asean-day": {
+        "title": "ASEAN Day",
+        "summary": "Teachers in national costumes gathered on a stage hung with the ASEAN flag and member-country flags, and also cooked together in a classroom."
+      },
+      "krathong-making": {
+        "title": "Making Krathongs",
+        "summary": "Pupils made krathongs from banana leaves and flowers with adults' help, then posed with the finished krathongs beside a pond."
+      },
+      "kindergarten-graduation": {
+        "title": "Kindergarten Graduation",
+        "summary": "Kindergarten pupils in graduation gowns with their teachers in front of the Ban Wiang Doem School sign."
       }
     }
   },

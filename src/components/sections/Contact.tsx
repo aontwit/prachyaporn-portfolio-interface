@@ -31,7 +31,8 @@ export async function Contact() {
   const [user, domain] = profile.email.split("@");
   const cards = [
     // <wbr>: on a narrow phone the address wraps before "@", never mid-word.
-    { icon: "email", label: t("contact.email"), value: <>{user}<wbr />@{domain}</>, href: `mailto:${profile.email}`, tilt: -1, tape: "left-6 -rotate-6" },
+    // Tape on the right edge: the label sits top-left and must stay readable.
+    { icon: "email", label: t("contact.email"), value: <>{user}<wbr />@{domain}</>, href: `mailto:${profile.email}`, tilt: -1, tape: "right-6 -rotate-3" },
     { icon: "phone", label: t("contact.phone"), value: profile.phone, href: profile.phoneHref, tilt: 1, tape: "right-6 rotate-4" },
   ] as const;
 
@@ -50,13 +51,14 @@ export async function Contact() {
               <Tape className={c.tape} />
               <a
                 href={c.href}
-                className="flex min-h-16 items-center gap-3 bg-sheet px-4 pt-5 pb-3 leading-normal shadow-note transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-blue motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 motion-reduce:transition-none sm:gap-4 sm:px-5"
+                className="block min-h-16 bg-sheet px-4 pt-5 pb-3 leading-normal shadow-note transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink-blue motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 motion-reduce:transition-none sm:px-5"
               >
-                <Icon name={c.icon} className="size-6 shrink-0 text-ink-blue" />
-                <span className="min-w-0">
-                  <span className="block font-hand text-sm text-pencil">{c.label}</span>
-                  <span className="block text-base font-medium [overflow-wrap:anywhere] text-ink-blue">{c.value}</span>
+                {/* icon beside the label, not the value: the address gets the card's full width on phones */}
+                <span className="flex items-center gap-2 font-hand text-sm text-pencil">
+                  <Icon name={c.icon} className="size-5 shrink-0 text-ink-blue" />
+                  {c.label}
                 </span>
+                <span className="mt-1 block text-base font-medium [overflow-wrap:anywhere] text-ink-blue">{c.value}</span>
               </a>
             </li>
           ))}

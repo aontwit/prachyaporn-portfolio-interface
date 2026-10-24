@@ -1,7 +1,8 @@
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { NavList } from "@/components/nav/NavList";
 import { doodle } from "@/content/doodles";
+import { YEAR } from "@/lib/year";
 
 const BEAR = doodle("bear-pencil");
 const BEAR_WIDTH = 64;
@@ -10,6 +11,7 @@ const BEAR_WIDTH = 64;
 export async function Footer() {
   const t = await getTranslations();
   const name = t("profile.name");
+  const format = await getFormatter();
   return (
     <footer className="mt-10 border-t-4 border-grid-strong bg-note-blue">
       <div className="mx-auto max-w-5xl px-4 pt-10 pb-24 sm:px-6">
@@ -38,7 +40,7 @@ export async function Footer() {
           <NavList variant="footer" />
         </nav>
         <p className="mt-6 text-sm text-pencil">
-          © {new Date().getFullYear()} {name}
+          © {format.dateTime(new Date(), YEAR)} {name}
         </p>
       </div>
     </footer>

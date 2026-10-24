@@ -1,7 +1,8 @@
-import { getTranslations } from "next-intl/server";
+import { getFormatter, getTranslations } from "next-intl/server";
 import { Sheet } from "@/components/paper";
 import { Section } from "@/components/Section";
 import { profile } from "@/content/profile";
+import { YEAR, yearDate } from "@/lib/year";
 
 // Two wobbles of a short crayon dash, and the crayons that draw them, taken in turn per point.
 const DASHES = ["M1.5 5.2c3.1-1.1 6.4-1.6 9.7-1.2 2.4.3 4.4.6 7.3.1", "M1.4 4.1c2.8.8 5.9 1 9.1.5 2.6-.4 4.9-.9 7.8-.4"];
@@ -56,13 +57,14 @@ function Stamp({ label }: { label: string }) {
 // The current job on a taped lined page: years, role and school, then the points, every line on a 32px rule.
 export async function Experience() {
   const t = await getTranslations();
+  const format = await getFormatter();
   return (
     <Section id="experience" title={t("nav.experience")}>
       <Sheet tilt={-0.4} tape="one">
         <div className="flex items-start justify-between gap-3">
           <div className="min-w-0">
             <p className="font-hand text-sm leading-8 font-semibold text-ink-blue tabular-nums">
-              {t("experience.current.years")}
+              {t("experience.current.years", { from: format.dateTime(yearDate(profile.experienceFrom), YEAR) })}
             </p>
             <h3 className="font-hand text-base leading-8 font-semibold text-ink sm:text-lg">
               {t("experience.current.title")}
