@@ -23,6 +23,7 @@ function lockScroll(locked: boolean) {
  */
 export function Lightbox({
   title,
+  label,
   photos,
   index,
   open,
@@ -30,6 +31,8 @@ export function Lightbox({
   onClose,
 }: {
   title: string;
+  /** The dialog's accessible name, for photos that are not an activity's; defaults to "Photos from {title}". */
+  label?: string;
   photos: GalleryPhoto[];
   /** `null` until the first open. */
   index: number | null;
@@ -97,7 +100,7 @@ export function Lightbox({
       ref={ref}
       role="dialog"
       aria-modal="true"
-      aria-label={t("label", { title })}
+      aria-label={label ?? t("label", { title })}
       onClose={() => {
         lockScroll(false);
         onClose();
